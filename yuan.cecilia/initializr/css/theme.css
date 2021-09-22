@@ -1,0 +1,130 @@
+body {
+	font-family: 'Roboto Condensed', sans-serif;
+	font: 16px/26px sans-serif ;
+	background-image:url(../img/backimg.jpg); /* Photo from https://unsplash.com/photos/hX_hf2lPpUU */
+	background-size: cover;
+	background-attachment: scroll;
+	
+}
+
+
+.header-container{
+	z-index: 30;
+	background: none;
+	display: block;
+	padding-top: 40px;
+	padding-bottom: 6px;
+	margin-left: 61px;
+	margin-right: 61px;
+
+}
+
+.wrapper h1{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	display: block;
+}
+
+.wrapper nav{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	display: block;
+}
+
+.title{
+	float: left;
+}
+
+nav{
+	margin: 0;
+	padding: 0;
+	position: relative;
+	z-index: 30;
+	float: right;
+	text-align: center;
+	background: none;
+	border: none;
+}
+
+ul{
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	padding-inline-start: 40px;
+	box-sizing: border-box;
+	display: inline-block;
+	position: relative;
+	vertical-align: top;
+	list-style-type: none;
+}
+
+li {
+	float: right;
+	padding-right: 20px;
+}
+
+li a {
+	display: block;
+	color: black;
+	text-align: center;
+	padding: 14px 30px;
+	text-decoration: none;
+}
+
+li a:hover:not(.active){
+	text-decoration: underline;
+	color: #000;
+	text-shadow: none;
+	font-weight: bold;
+}
+
+.main article header{
+	justify-content: center;
+	text-align: center;
+	margin: 61px;
+}
+
+.main article h1 {
+	text-align: center;
+	margin-left: 3%;
+	position: relative;
+	color: skyblue;
+}
+
+.main article section{
+	display: flex;
+	justify-content: center;
+	padding-top: 3%;
+	margin: 61px;
+	flex-flow: row;
+}
+
+.main article h2{
+	padding-right: 3%;
+
+}
+
+.main aside{
+	margin: 61px;
+}
+
+.main footer{
+	justify-content: center;
+	text-align: center;
+	margin: 61px;
+}
+
+.main footer h3{
+	text-decoration: underline;
+}
+
+
+
+.footer-container{
+	padding-top: 20px;
+	padding-bottom: 20px;
+	background-color: white;
+	text-align: center;
+	text-transform: uppercase;
+	position: relative;
+	font-size: 80%;
+}
