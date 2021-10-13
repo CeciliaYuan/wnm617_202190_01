@@ -1,118 +1,344 @@
-<!-- Cecilia Yuan -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title></title>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Bread & Me</title>
 
-	<base href="/aau/wnm617/yuan.cecilia/">
+   <base href="/aau/wnm617/yuan.cecilia/">
 
-   	<link rel="stylesheet" href="lib/css/jquery.mobile.structure-1.4.5.min.css">
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
-   	<link rel="stylesheet" href="css/app.css">
-   	<script src="lib/js/jquery-2.2.4.min.js"></script>
-   
- 	<script src="js/app.js"></script>
+   <link rel="stylesheet" href="lib/css/jquery.mobile.structure-1.4.5.min.css">
+   <link rel="stylesheet" href="css/app.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
-  	<script src="lib/js/jquery.mobile-1.4.5.min.js"></script>
+   <script src="lib/js/jquery-2.2.4.min.js"></script>
+
+   <script src="js/app.js"></script>
+   <script src="js/signin.js"></script>
+
+   <script src="lib/js/jquery.mobile-1.4.5.min.js"></script>
 </head>
-
 <body>
 
-	<section data-role="page" id="page-signin">
-      <div class="wrapper-signin">
-         <div class="title">
-            Login
+   <section data-role="page" id="page-signin">
+      <div data-role="main" class="display-flex flex-vertical">
+         <div class="log-background"></div>
+         <div class="flex-stretch"></div>
+         <div class="wrapper">
+            <div class="title">
+               Login
+            </div>
+            <form data-ajax="false" class="form signin-form" id="signin-form" style="padding:20px">
+               <div class="form-control">
+                  <input class="form-input" type="text" id="signin-username" data-role="none" placeholder="Username" required>
+               </div>
+               <div class="form-control">
+                  <input class="form-input" type="password" id="signin-password" data-role="none" placeholder="Password" required>
+               </div>
+               <div class="content small contered">  
+                  <div class="checkbox">
+                     <input type="checkbox" id="remember-me">
+                     <label for="remember-me">Remember Me</label>
+                  </div>
+                  <div class="pass-link">
+                     <a href="#">Forget password?</a>
+                  </div>
+               </div>
+               <div class="form-control">
+                  <input type="submit" value="Sign In" class="form-button">
+               </div>
+               <div class="signup-link form-control small centered">
+                  Not a member? <a href="#page-signup">Signup Now</a>
+               </div>
+            </form>
          </div>
-         <form data-ajax="false" class="form" id="signin-form" style="padding:10px">
-            <div class="form-control">
-               <input class="form-input" type="text" id="signin-username" data-role="none" placeholder="Username">
+      </div>
+   </section>
+
+   <section data-role="page" id="page-signup">
+      <div data-role="main" class="wrapper display-flex flex-vertical">
+         <div class="log-background"></div>
+         <div class="flex-stretch"></div>
+         <div class="wrapper">
+            <div class="title">
+               Sign Up
             </div>
-            <div class="form-control">
-               <input class="form-input" type="password" id="signin-password" data-role="none" placeholder="Password">
-            </div>
-            <div class="content">
-               <div class="checkbox">
-                  <input type="checkbox" id="remember-me">
-                  <label for="remember-me">Remember Me</label>
+            <form data-ajax="false" class="form signin-form" id="signup-form" style="padding:20px">
+               <div class="form-control">
+                  <input class="form-input" type="text" id="signup-username" data-role="none" placeholder="Username" required>
                </div>
-               <div class="pass-link">
-                  <a href="#">Forgot Password?</a>
+               <div class="form-control">
+                  <input class="form-input" type="text" id="signup-email" data-role="none" placeholder="Email" required>
+               </div>
+               <div class="form-control">
+                  <input class="form-input" type="password" id="signup-password" data-role="none" placeholder="Password" required>
+               </div>
+               <div class="form-control">
+                  <input class="form-input" type="password" id="signup-password2" data-role="none" placeholder="Confirm" required>
+               </div>
+               <div class="form-control">
+                  <input type="submit" value="Sign Up" class="form-button">
+               </div>
+               <div class="form-control small centered">
+                  Already have an account? <a href="#page-signin">Sign In</a>
+               </div>
+            </form>
+         </div>
+      </div>
+   </section>
+
+   <section data-role="page" id="page-map" >
+      <div data-role="main">
+
+             <div class="map"></div>
+             <div class="search-box">
+                  <div class="search-btn"><i class="fa fa-search"></i></div>
+                  <div class="search-input">
+                      <input type="text" class="search-input" placeholder="Search">
+               </div>
+             </div>
+         </div>
+      </div>
+      <footer data-role="footer">
+         <ul>
+            <li><a href="#page-map"><i class="fa fa-map-o fa-lg"></i></a></li>
+            <li><a href="#" data-activate="#list-modal1"><i class="fa fa-list-ul fa-lg"></i></a></li>
+         </ul>
+      </footer>
+
+      <div class="floater bottom center">
+         <a href="#page-map-add" class="btn-circle"><i class="fa fa-plus" fa-3x></i></a>
+      </div>
+
+         <div class="modal" id="list-modal1">
+            <div class="modal-back" data-deactivate="#list-modal1"></div>
+            <div class="modal-drawer right">
+               <div class="modal-head display-flex">
+                  <div class="flex-stretch">Menu</div>
+                  <div class="flex-none">
+                     <div class="icon" data-deactivate="#list-modal1"><i class="fa fa-close"></i></div>
+                  </div>
+               </div>
+               <div class="modal-body" data-role="menu">
+                  <ul>
+                     <li><a href="#page-list"><i class="fa fa-folder-o"></i>&nbsp; List</a></li>
+                     <li><a href="#page-user-profile"><i class="fa fa-user-o"></i>&nbsp; User Profile</a></li>
+                  </ul>
                </div>
             </div>
-            <div class="form-control">
-               <a href="#page-recent" class="form-button">Sign In</a>
+         </div>
+   </section>
+
+   <section data-role="page" id="page-map-add">
+      <header data-role="header">
+         <h1>Add Bread</h1>
+         <ul>
+            <li><a href="#" data-rel="back"><i class="fa fa-arrow-left"></i></a></li>
+         </ul>
+      </header>
+      <div data-role="main">
+        <div class="">
+        </div>
+      </div>
+      <footer data-role="footer">
+         <ul>
+            <li><a href="#page-map"><i class="fa fa-map-o fa-lg"></i></a>
+            </li>
+            <li><a href="#" data-activate="#list-modal2"><i class="fa fa-list-ul fa-lg"></i></a></li>
+      </footer>
+
+      <div class="modal" id="list-modal2">
+            <div class="modal-back" data-deactivate="#list-modal2"></div>
+            <div class="modal-drawer right">
+               <div class="modal-head display-flex">
+                  <div class="flex-stretch">Menu</div>
+                  <div class="flex-none">
+                     <div class="icon" data-deactivate="#list-modal2"><i class="fa fa-close"></i></div>
+                  </div>
+               </div>
+               <div class="modal-body" data-role="menu">
+                  <ul>
+                     <li><a href="#page-list"><i class="fa fa-folder-o"></i>&nbsp; List</a></li>
+                     <li><a href="#page-user-profile"><i class="fa fa-user-o"></i>&nbsp; User Profile</a></li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+   </section>   
+
+   <section data-role="page" id="page-list">
+      <div data-role="main">
+         <div class="overscroll floater fill-parent">
+            <ul>
+               <!-- li*10>a[href=#page-bread-profile]{bread $} -->
+               <li><a href="#page-bread-profile">bread 1</a></li>
+               <li><a href="#page-bread-profile">bread 2</a></li>
+               <li><a href="#page-bread-profile">bread 3</a></li>
+               <li><a href="#page-bread-profile">bread 4</a></li>
+               <li><a href="#page-bread-profile">bread 5</a></li>
+               <li><a href="#page-bread-profile">bread 6</a></li>
+               <li><a href="#page-bread-profile">bread 7</a></li>
+               <li><a href="#page-bread-profile">bread 8</a></li>
+               <li><a href="#page-bread-profile">bread 9</a></li>
+               <li><a href="#page-bread-profile">bread 10</a></li>
+               <li><a href="#page-bread-profile">bread 11</a></li>
+               <li><a href="#page-bread-profile">bread 12</a></li>
+               <li><a href="#page-bread-profile">bread 13</a></li>
+               <li><a href="#page-bread-profile">bread 14</a></li>
+               <li><a href="#page-bread-profile">bread 15</a></li>
+               <li><a href="#page-bread-profile">bread 16</a></li>
+               <li><a href="#page-bread-profile">bread 17</a></li>
+               <li><a href="#page-bread-profile">bread 18</a></li>
+               <li><a href="#page-bread-profile">bread 19</a></li>
+               <li><a href="#page-bread-profile">bread 20</a></li>
+               <li><a href="#page-bread-profile">bread 21</a></li>
+               <li><a href="#page-bread-profile">bread 22</a></li>
+               <li><a href="#page-bread-profile">bread 23</a></li>
+               <li><a href="#page-bread-profile">bread 24</a></li>
+               <li><a href="#page-bread-profile">bread 25</a></li>
+               <li><a href="#page-bread-profile">bread 26</a></li>
+               <li><a href="#page-bread-profile">bread 27</a></li>
+               <li><a href="#page-bread-profile">bread 28</a></li>
+               <li><a href="#page-bread-profile">bread 29</a></li>
+               <li><a href="#page-bread-profile">bread 30</a></li>
+               <li><a href="#page-bread-profile">bread 31</a></li>
+               <li><a href="#page-bread-profile">bread 32</a></li>
+               <li><a href="#page-bread-profile">bread 33</a></li>
+               <li><a href="#page-bread-profile">bread 34</a></li>
+               <li><a href="#page-bread-profile">bread 35</a></li>
+               <li><a href="#page-bread-profile">bread 36</a></li>
+               <li><a href="#page-bread-profile">bread 37</a></li>
+               <li><a href="#page-bread-profile">bread 38</a></li>
+               <li><a href="#page-bread-profile">bread 39</a></li>
+               <li><a href="#page-bread-profile">bread 40</a></li>
+               <li><a href="#page-bread-profile">bread 41</a></li>
+               <li><a href="#page-bread-profile">bread 42</a></li>
+               <li><a href="#page-bread-profile">bread 43</a></li>
+               <li><a href="#page-bread-profile">bread 44</a></li>
+               <li><a href="#page-bread-profile">bread 45</a></li>
+               <li><a href="#page-bread-profile">bread 46</a></li>
+               <li><a href="#page-bread-profile">bread 47</a></li>
+               <li><a href="#page-bread-profile">bread 48</a></li>
+               <li><a href="#page-bread-profile">bread 49</a></li>
+               <li><a href="#page-bread-profile">bread 50</a></li>
+               <li><a href="#page-bread-profile">bread 1</a></li>
+               <li><a href="#page-bread-profile">bread 2</a></li>
+               <li><a href="#page-bread-profile">bread 3</a></li>
+               <li><a href="#page-bread-profile">bread 4</a></li>
+               <li><a href="#page-bread-profile">bread 5</a></li>
+               <li><a href="#page-bread-profile">bread 6</a></li>
+               <li><a href="#page-bread-profile">bread 7</a></li>
+               <li><a href="#page-bread-profile">bread 8</a></li>
+               <li><a href="#page-bread-profile">bread 9</a></li>
+               <li><a href="#page-bread-profile">bread 10</a></li>
+            </ul>
+         </div>
+
+      <div class="floater bottom right">
+         <a href="#" class="btn-circle" data-activate="#list-add-modal"><i class="fa fa-plus" fa-3x></i></a>
+      </div>
+      </div>
+      <footer data-role="footer">
+         <ul>
+            <li><a href="#page-map"><i class="fa fa-map-o fa-lg"></i></a></li>
+            <li><a href="#" data-activate="#list-modal3"><i class="fa fa-list-ul fa-lg"></i></a></li>
+      </footer>
+
+      <div class="modal" id="list-modal3">
+            <div class="modal-back" data-deactivate="#list-modal3"></div>
+            <div class="modal-drawer right">
+               <div class="modal-head display-flex">
+                  <div class="flex-stretch">Menu</div>
+                  <div class="flex-none">
+                     <div class="icon" data-deactivate="#list-modal3"><i class="fa fa-close"></i></div>
+                  </div>
+               </div>
+               <div class="modal-body" data-role="menu">
+                  <ul>
+                     <li><a href="#page-list"><i class="fa fa-folder-o"></i>&nbsp; List</a></li>
+                     <li><a href="#page-user-profile"><i class="fa fa-user-o"></i>&nbsp; User Profile</a></li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+
+      <div class="modal" id="list-add-modal">
+         <div class="modal-back" data-deactivate="#list-add-modal"></div>
+         <form class="modal-popup form" id="list-add-form" data-ajax="false">
+            <div class="modal-head">Add Bread</div>
+            <div class="modal-body">
+               <div class="form-control">
+                  <label for="list-add-name" class="form-label">Name</label>
+                  <input type="text" id="list-add-name" class="form-input" data-role="none" placeholder="Name">
+               </div>
+               <div class="form-control">
+                  <label for="list-add-type" class="form-label">Type</label>
+                  <input type="text" id="list-add-type" class="form-input" data-role="none" placeholder="Name">
+               </div>
+               <div class="form-control">
+                  <label for="list-add-breed" class="form-label">Storn Name</label>
+                  <input type="text" id="list-add-breed" class="form-input" data-role="none" placeholder="Name">
+               </div>
+            </div>
+            <div class="modal-foot">
+               <button type="submit" class="form-button">Save</button>
             </div>
          </form>
       </div>
    </section>
 
-	 <section data-role="page" id="page-recent">
-      <div data-role="main">
-         Map
-         <span class="material-icons">&#xE87C;</span>
-      </div>
-      <footer data-role="footer">
-         <ul>
-            <li><a href="#page-recent"><span class="material-icons-outlined">
-Map
-</span></a></li>
-            <li><a href="#page-list">List</a></li>
-            <li><a href="#page-user-profile">Profile</a></li>
-         </ul>
-      </footer>
-   </section>
-
-	<section data-role="page" id="page-list">
-      <div data-role="main">
-         <ul>
-            <!-- li*10>a[href=#page-animal-profile]{Animal $} -->
-            <li><a href="#page-animal-profile">Animal 1</a></li>
-            <li><a href="#page-animal-profile">Animal 2</a></li>
-            <li><a href="#page-animal-profile">Animal 3</a></li>
-            <li><a href="#page-animal-profile">Animal 4</a></li>
-            <li><a href="#page-animal-profile">Animal 5</a></li>
-            <li><a href="#page-animal-profile">Animal 6</a></li>
-            <li><a href="#page-animal-profile">Animal 7</a></li>
-            <li><a href="#page-animal-profile">Animal 8</a></li>
-            <li><a href="#page-animal-profile">Animal 9</a></li>
-            <li><a href="#page-animal-profile">Animal 10</a></li>
-         </ul>
-      </div>
-      <footer data-role="footer">
-         <ul>
-            <li><a href="#page-list">List</a></li>
-            <li><a href="#page-user-profile">Profile</a></li>
-         </ul>
-      </footer>
-   </section>
-
-    <section data-role="page" id="page-user-profile">
-      <div data-role="main">
-         USER!
-      </div>
-      <footer data-role="footer">
-         <ul>
-            <li><a href="#page-recent">map</a></li>
-            <li><a href="#page-list">List</a></li>
-            <li><a href="#page-user-profile">Profile</a></li>
-         </ul>
-      </footer>
-   </section>
-
-   <section data-role="page" id="page-animal-profile">
+   <section data-role="page" id="page-user-profile">
       <header data-role="header">
-         <h1>Animal!</h1>
          <ul>
-            <li><a href="#" data-rel="back">Back</a></li>
+            <li><a href="#" data-rel="back"><i class="fa fa-arrow-left"></i></a></li>
+         </ul>
+      </header>
+      <div data-role="main" class="overscroll">
+          
+            <div class="user-info">
+               <div class="user-img"><img src="img/user.png"></div> 
+           <!-- source from https://www.emojisky.com/desc/8475 --> 
+               
+                <div class="user"></div>
+            <div class="user-list">
+               <ul>
+                  <li><a href="#"><i class="fa fa-cog"></i>&nbsp; Settings</a>
+            </div>
+            <div>
+               <button class="form-button js-logout">Log Out</button>
+            </div>
+      </div>
+
+      <div class="modal" id="list-modal4">
+            <div class="modal-back" data-deactivate="#list-modal4"></div>
+            <div class="modal-drawer right">
+               <div class="modal-head display-flex">
+                  <div class="flex-stretch">Menu</div>
+                  <div class="flex-none">
+                     <div class="icon" data-deactivate="#list-modal4"><i class="fa fa-close"></i></div>
+                  </div>
+               </div>
+               <div class="modal-body" data-role="menu">
+                  <ul>
+                     <li><a href="#page-list"><i class="fa fa-folder-o"></i>&nbsp; List</a></li>
+                     <li><a href="#page-user-profile"><i class="fa fa-user-o"></i>&nbsp; User Profile</a></li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+   </section>
+
+   <section data-role="page" id="page-bread-profile">
+      <header data-role="header">
+         <h1>Bread</h1>
+         <ul>
+            <li><a href="#" data-rel="back"><i class="fa fa-arrow-left"></i></a></li>
          </ul>
       </header>
       <div data-role="main">
-         Animal!
+         bread!
       </div>
    </section>
-
+   
 </body>
 </html>
