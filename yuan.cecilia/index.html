@@ -3,7 +3,7 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Bread & Me</title>
+   <title>bread & Me</title>
 
    <base href="/aau/wnm617/yuan.cecilia/">
 
@@ -45,7 +45,7 @@
                   </div>
                </div>
                <div class="form-control">
-                  <input type="submit" value="Sign In" class="form-button">
+                  <input type="submit" value="Sign In" class="form-button" data-role="none">
                </div>
                <div class="signup-link form-control small centered">
                   Not a member? <a href="#page-signup">Signup Now</a>
@@ -77,25 +77,31 @@
                   <input class="form-input" type="password" id="signup-password2" data-role="none" placeholder="Confirm" required>
                </div>
                <div class="form-control">
-                  <input type="submit" value="Sign Up" class="form-button">
+                  <input type="submit" value="Sign Up" class="form-button" data-role="none">
                </div>
                <div class="form-control small centered">
                   Already have an account? <a href="#page-signin">Sign In</a>
                </div>
             </form>
          </div>
-      </div>
+      </div> data-role="none"
    </section>
 
    <section data-role="page" id="page-map" >
       <div data-role="main">
 
              <div class="map"></div>
-             <div class="search-box">
+             <div class="search-box" data-role="none">
                   <div class="search-btn"><i class="fa fa-search"></i></div>
                   <div class="search-input">
                       <input type="text" class="search-input" placeholder="Search">
                </div>
+             </div>
+
+            <div class="floater" style="top:35%; left:65%;">
+                <a href="#" data-active="" class="ui-link">
+                  <i class="fa fa-map-marker fa-2x"></i>
+               </a>
              </div>
          </div>
       </div>
@@ -131,15 +137,53 @@
 
    <section data-role="page" id="page-map-add">
       <header data-role="header">
-         <h1>Add Bread</h1>
+         <h1>Add bread</h1>
          <ul>
             <li><a href="#" data-rel="back"><i class="fa fa-arrow-left"></i></a></li>
+            <li class="flex-stretch"></li>
+            <li class="save">
+               <a href="#page-list" class="ui-link save-icon">save</a>
+            </li>
          </ul>
+         
       </header>
+
       <div data-role="main">
-        <div class="">
-        </div>
+            <div class="container">
+               <div class="add-image-block">
+                  <div class="add-image"><i class="fa fa-camera fa-lg"></i></div>
+                     
+               </div>
+
+               <div class="add-bread-info">
+                  <label for="list-add-name" class="form-label">Name</label>
+                  <input type="text" id="list-add-name" class="form-input" data-role="none" placeholder="Name">
+                  <label for="list-add-name" class="form-label">Bakery</label>
+                  <input type="text" id="list-add-name" class="form-input" data-role="none" placeholder="Bakery">
+                  <label for="list-add-name" class="form-label">Note</label>
+                  <input type="text" id="list-add-name" class="form-input" data-role="none" placeholder="Note">
+                  
+               </div>
+
+               <div class="post-content" data-role="list">
+                  <div class="overscroll-y tag-list">
+                     <div class="tag"><a href="#">White</a></div>
+                     <div class="tag"><a href="#">Wheat</a></div>
+                     <div class="tag"><a href="#">Bagels</a></div>
+                     <div class="tag"><a href="#">Baguette</a></div>
+                     <div class="tag"><a href="#">Croissant</a></div>
+                     <div class="tag" style="font-size: 1em;"><a href="#">+</a></div>
+                  </div>
+               </div>
+
+
+               <div class="bread-location">
+                  <img src="img/location.png">
+                  <div class="floater" style="top:80%;left:50%;"><i class="fa fa-map-marker fa-lg"></i></div>
+               </div>
+            </div>  
       </div>
+
       <footer data-role="footer">
          <ul>
             <li><a href="#page-map"><i class="fa fa-map-o fa-lg"></i></a>
@@ -168,69 +212,19 @@
 
    <section data-role="page" id="page-list">
       <div data-role="main">
-         <div class="overscroll floater fill-parent">
-            <ul>
-               <!-- li*10>a[href=#page-bread-profile]{bread $} -->
-               <li><a href="#page-bread-profile">bread 1</a></li>
-               <li><a href="#page-bread-profile">bread 2</a></li>
-               <li><a href="#page-bread-profile">bread 3</a></li>
-               <li><a href="#page-bread-profile">bread 4</a></li>
-               <li><a href="#page-bread-profile">bread 5</a></li>
-               <li><a href="#page-bread-profile">bread 6</a></li>
-               <li><a href="#page-bread-profile">bread 7</a></li>
-               <li><a href="#page-bread-profile">bread 8</a></li>
-               <li><a href="#page-bread-profile">bread 9</a></li>
-               <li><a href="#page-bread-profile">bread 10</a></li>
-               <li><a href="#page-bread-profile">bread 11</a></li>
-               <li><a href="#page-bread-profile">bread 12</a></li>
-               <li><a href="#page-bread-profile">bread 13</a></li>
-               <li><a href="#page-bread-profile">bread 14</a></li>
-               <li><a href="#page-bread-profile">bread 15</a></li>
-               <li><a href="#page-bread-profile">bread 16</a></li>
-               <li><a href="#page-bread-profile">bread 17</a></li>
-               <li><a href="#page-bread-profile">bread 18</a></li>
-               <li><a href="#page-bread-profile">bread 19</a></li>
-               <li><a href="#page-bread-profile">bread 20</a></li>
-               <li><a href="#page-bread-profile">bread 21</a></li>
-               <li><a href="#page-bread-profile">bread 22</a></li>
-               <li><a href="#page-bread-profile">bread 23</a></li>
-               <li><a href="#page-bread-profile">bread 24</a></li>
-               <li><a href="#page-bread-profile">bread 25</a></li>
-               <li><a href="#page-bread-profile">bread 26</a></li>
-               <li><a href="#page-bread-profile">bread 27</a></li>
-               <li><a href="#page-bread-profile">bread 28</a></li>
-               <li><a href="#page-bread-profile">bread 29</a></li>
-               <li><a href="#page-bread-profile">bread 30</a></li>
-               <li><a href="#page-bread-profile">bread 31</a></li>
-               <li><a href="#page-bread-profile">bread 32</a></li>
-               <li><a href="#page-bread-profile">bread 33</a></li>
-               <li><a href="#page-bread-profile">bread 34</a></li>
-               <li><a href="#page-bread-profile">bread 35</a></li>
-               <li><a href="#page-bread-profile">bread 36</a></li>
-               <li><a href="#page-bread-profile">bread 37</a></li>
-               <li><a href="#page-bread-profile">bread 38</a></li>
-               <li><a href="#page-bread-profile">bread 39</a></li>
-               <li><a href="#page-bread-profile">bread 40</a></li>
-               <li><a href="#page-bread-profile">bread 41</a></li>
-               <li><a href="#page-bread-profile">bread 42</a></li>
-               <li><a href="#page-bread-profile">bread 43</a></li>
-               <li><a href="#page-bread-profile">bread 44</a></li>
-               <li><a href="#page-bread-profile">bread 45</a></li>
-               <li><a href="#page-bread-profile">bread 46</a></li>
-               <li><a href="#page-bread-profile">bread 47</a></li>
-               <li><a href="#page-bread-profile">bread 48</a></li>
-               <li><a href="#page-bread-profile">bread 49</a></li>
-               <li><a href="#page-bread-profile">bread 50</a></li>
-               <li><a href="#page-bread-profile">bread 1</a></li>
-               <li><a href="#page-bread-profile">bread 2</a></li>
-               <li><a href="#page-bread-profile">bread 3</a></li>
-               <li><a href="#page-bread-profile">bread 4</a></li>
-               <li><a href="#page-bread-profile">bread 5</a></li>
-               <li><a href="#page-bread-profile">bread 6</a></li>
-               <li><a href="#page-bread-profile">bread 7</a></li>
-               <li><a href="#page-bread-profile">bread 8</a></li>
-               <li><a href="#page-bread-profile">bread 9</a></li>
-               <li><a href="#page-bread-profile">bread 10</a></li>
+         <div class="overscroll floater fill-parent" data-role="list">
+            <ul class="breadlist">
+               <li class="breadlist-item" data-template="#breadlist-item-template"></li>
+               <li class="breadlist-item" data-template="#breadlist-item-template"></li>
+               <li class="breadlist-item" data-template="#breadlist-item-template"></li>
+               <li class="breadlist-item" data-template="#breadlist-item-template"></li>
+               <li class="breadlist-item" data-template="#breadlist-item-template"></li>
+               <li class="breadlist-item" data-template="#breadlist-item-template"></li>
+               <li class="breadlist-item" data-template="#breadlist-item-template"></li>
+               <li class="breadlist-item" data-template="#breadlist-item-template"></li>
+               <li class="breadlist-item" data-template="#breadlist-item-template"></li>
+               <li class="breadlist-item" data-template="#breadlist-item-template"></li>
+               <li class="breadlist-item" data-template="#breadlist-item-template"></li>
             </ul>
          </div>
 
@@ -265,7 +259,7 @@
       <div class="modal" id="list-add-modal">
          <div class="modal-back" data-deactivate="#list-add-modal"></div>
          <form class="modal-popup form" id="list-add-form" data-ajax="false">
-            <div class="modal-head">Add Bread</div>
+            <div class="modal-head">Add bread</div>
             <div class="modal-body">
                <div class="form-control">
                   <label for="list-add-name" class="form-label">Name</label>
@@ -281,7 +275,7 @@
                </div>
             </div>
             <div class="modal-foot">
-               <button type="submit" class="form-button">Save</button>
+               <button type="submit" class="form-button" data-role="none">Save</button>
             </div>
          </form>
       </div>
@@ -289,40 +283,61 @@
 
    <section data-role="page" id="page-user-profile">
       <header data-role="header">
+         <h1>Profile</h1>
          <ul>
             <li><a href="#" data-rel="back"><i class="fa fa-arrow-left"></i></a></li>
          </ul>
       </header>
-      <div data-role="main" class="overscroll">
-          
+
+      <div data-role="main">
+         <div class="container">
             <div class="user-info">
-               <div class="user-img"><img src="img/user.png"></div> 
+               <div class="user-img"><img src="img/user.jpg"></div>
+               <div class="user-name">
+                  <h1 style="color: var(--color-main-dark);">Cecilia Y.</h1>
+                  <p style="color: var(--color-main-light);">cecilia.ywt@gmail.com</p>
+               </div> 
+               <div class="floater right"><a href="#"  data-activate="#list-modal10"><i class="fa fa-cog fa-lg"></i></a></div>
            <!-- source from https://www.emojisky.com/desc/8475 --> 
-               
-                <div class="user"></div>
-            <div class="user-list">
-               <ul>
-                  <li><a href="#"><i class="fa fa-cog"></i>&nbsp; Settings</a>
             </div>
-            <div>
-               <button class="form-button js-logout">Log Out</button>
+
+            <div class="post-content" data-role="list">
+               <div class="overscroll-y tag-list">
+                  <div class="tag"><a href="#">All(7)</a> </div>
+                  <div class="tag"><a href="#">White</a></div>
+                  <div class="tag"><a href="#">Wheat</a></div>
+                  <div class="tag"><a href="#">Bagels</a></div>
+                  <div class="tag"><a href="#">Baguette</a></div>
+                  <div class="tag"><a href="#">Croissant</a></div>
+               </div>
             </div>
+
+
+            <div class="overscroll fill-parent" data-role="list">
+               <ul class="postlist">
+                  <li class="postlist-item" data-template="#postlist-item-template"></li>
+                  <li class="postlist-item" data-template="#postlist-item-template"></li>
+                  <li class="postlist-item" data-template="#postlist-item-template"></li>
+                  <li class="postlist-item" data-template="#postlist-item-template"></li>
+                  <li class="postlist-item" data-template="#postlist-item-template"></li>
+               </ul>
+            </div>
+         </div>
       </div>
 
-      <div class="modal" id="list-modal4">
-            <div class="modal-back" data-deactivate="#list-modal4"></div>
-            <div class="modal-drawer right">
+      <div class="modal" id="list-modal10">
+            <div class="modal-back" data-deactivate="#list-modal10"></div>
+            <div class="modal-drawer bottom">
                <div class="modal-head display-flex">
-                  <div class="flex-stretch">Menu</div>
+                  <div class="flex-stretch">Setting</div>
                   <div class="flex-none">
-                     <div class="icon" data-deactivate="#list-modal4"><i class="fa fa-close"></i></div>
+                     <div class="icon" data-deactivate="#list-modal10"><i class="fa fa-close"></i></div>
                   </div>
                </div>
-               <div class="modal-body" data-role="menu">
-                  <ul>
-                     <li><a href="#page-list"><i class="fa fa-folder-o"></i>&nbsp; List</a></li>
-                     <li><a href="#page-user-profile"><i class="fa fa-user-o"></i>&nbsp; User Profile</a></li>
-                  </ul>
+               <div class="modal-body">
+                  <div>
+                     <button class="form-button logout-btn js-logout" data-role="none">Log Out</button>
+                  </div>
                </div>
             </div>
          </div>
@@ -330,15 +345,78 @@
 
    <section data-role="page" id="page-bread-profile">
       <header data-role="header">
-         <h1>Bread</h1>
          <ul>
             <li><a href="#" data-rel="back"><i class="fa fa-arrow-left"></i></a></li>
+            <li class="flex-stretch"></li>
+            <li class="save">
+               <a href="#" data-activate="#list-modal5"><i class="fa fa-ellipsis-h"></i></a>
+            </li>
          </ul>
       </header>
       <div data-role="main">
-         bread!
+         
+            <div class="container">
+               <div class="bread-image">
+                  <img src="img/bread2.jpg">
+               </div>
+               <div class="bread-info">
+                  <h1>Bread Name</h1>
+                  <h2>Backery</h2>
+                  <p>21 October 2021</p>
+               </div>
+
+               <div class="bread-location-sm">
+                  <div class="location-address">
+                     <p>San Francisco</p>
+                     <img src="img/location1.png">
+               </div>
       </div>
+
+      <div class="modal" id="list-modal5">
+            <div class="modal-back" data-deactivate="#list-modal5"></div>
+            <div class="modal-drawer-sm right">
+               <div class="modal-body list-edit" data-role="list">
+                  <ul>
+                     <li><a href="#"><i class="fa fa-arrow-circle-up"></i>&nbsp; Sticky on Top</a></li>
+                     <li class="line"></li>
+                     <li><a href="#" data-active="#"><i class="fa fa-trash"></i>&nbsp; Delete</a></li>
+                     <li class="line"></li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+
+
    </section>
+
+      <script type="text/template" id="breadlist-item-template">
+         <a href="#page-bread-profile" class="display-flex">
+            <div class="flex-none breadlist-item-image">
+               <img src="img/bread-img1-thumb.png"
+            </div>
+            <div class="flex-stretch breadlist-item-body ">
+               <div class="breadlist-item-name">Bakery</div>
+               <div class="breadlist-item-location">San Francisco, CA</div>
+            </div>
+            
+         </a>
+   </script>
+
+      <script type="text/template" id="postlist-item-template">
+            <a href="#page-bread-profile">
+                  <div class="flex-none postlist-item-image">
+                     <img src="img/bread1.jpg">
+                  <div class="bread-address">  <i class="fa fa-map-marker" style="color:white;"></i>&nbsp; San Francisco</div>
+                  </div>
+
+               <div class="postlist-item-body ">
+                  <div class="postlist-item-name">Bakery</div>
+                  <div class="postlist-item-tag">Wheat</div>
+               </div>
+               
+            </a>
+      </script>
+
    
 </body>
 </html>
