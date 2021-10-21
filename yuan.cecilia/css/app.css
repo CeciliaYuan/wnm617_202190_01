@@ -10,7 +10,6 @@
     --color-white: #fff;
     --color-black: #111;
 
-
     --font-sans: Helvetica, Arial, sans-serif;
     --font-serif: Cambria, Georgia, serif;
 
@@ -707,6 +706,10 @@ a {
 .bread-info p{
    font-size: 0.8em;
    color: var(--color-neutral-medium);
+}
+
+.bread-info-detail{
+   display: flex;
 }
 
 .line{
