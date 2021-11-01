@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "name": "Whitaker Frost",
+    "username": "user1",
+    "email": "user1@gmail.com",
+    "password": "md5(pass)",
+    "img": "https://via.placeholder.com/400/932/fff/?text=user1",
+    "date_create": "2020-08-05 12:22:53"
+  },
+  {
+    "id": 2,
+    "name": "Ebony Norton",
+    "username": "user2",
+    "email": "user2@gmail.com",
+    "password": "md5(pass)",
+    "img": "https://via.placeholder.com/400/871/fff/?text=user2",
+    "date_create": "2021-05-29 08:02:22"
+  },
+  {
+    "id": 3,
+    "name": "Preston Garcia",
+    "username": "user3",
+    "email": "user3@gmail.com",
+    "password": "md5(pass)",
+    "img": "https://via.placeholder.com/400/951/fff/?text=user3",
+    "date_create": "2020-01-14 11:46:42"
+  },
+  {
+    "id": 4,
+    "name": "Terrell Monroe",
+    "username": "user4",
+    "email": "user4@gmail.com",
+    "password": "md5(pass)",
+    "img": "https://via.placeholder.com/400/962/fff/?text=user4",
+    "date_create": "2021-09-22 04:06:43"
+  },
+  {
+    "id": 5,
+    "name": "Antonia Moses",
+    "username": "user5",
+    "email": "user5@gmail.com",
+    "password": "md5(pass)",
+    "img": "https://via.placeholder.com/400/863/fff/?text=user5",
+    "date_create": "2021-01-05 05:24:21"
+  },
+  {
+    "id": 6,
+    "name": "Harrell Brooks",
+    "username": "user6",
+    "email": "user6@gmail.com",
+    "password": "md5(pass)",
+    "img": "https://via.placeholder.com/400/894/fff/?text=user6",
+    "date_create": "2020-09-10 01:25:45"
+  },
+  {
+    "id": 7,
+    "name": "Pat Salazar",
+    "username": "user7",
+    "email": "user7@gmail.com",
+    "password": "md5(pass)",
+    "img": "https://via.placeholder.com/400/844/fff/?text=user7",
+    "date_create": "2021-09-20 09:37:23"
+  },
+  {
+    "id": 8,
+    "name": "Virginia Gonzalez",
+    "username": "user8",
+    "email": "user8@gmail.com",
+    "password": "md5(pass)",
+    "img": "https://via.placeholder.com/400/738/fff/?text=user8",
+    "date_create": "2021-02-23 10:07:45"
+  },
+  {
+    "id": 9,
+    "name": "Murphy Bishop",
+    "username": "user9",
+    "email": "user9@gmail.com",
+    "password": "md5(pass)",
+    "img": "https://via.placeholder.com/400/708/fff/?text=user9",
+    "date_create": "2020-09-15 12:21:02"
+  },
+  {
+    "id": 10,
+    "name": "Daniels James",
+    "username": "user10",
+    "email": "user10@gmail.com",
+    "password": "md5(pass)",
+    "img": "https://via.placeholder.com/400/870/fff/?text=user10",
+    "date_create": "2020-05-06 09:07:08"
+  }
+]

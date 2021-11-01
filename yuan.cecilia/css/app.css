@@ -717,3 +717,29 @@ a {
    margin-bottom: 0.5em;
    border: 1px solid var(--color-neutral-medium);
 }
+
+
+/* dropdown */
+.dropdown-menu-content{
+   z-index: 1;
+   position:absolute;
+   bottom: 2.5em;
+   right: 20vmin;
+}
+
+.dropdown-menu-content li{
+   background-color: var(--color-white);
+   border-radius: 50%;
+   padding: 0.5em;
+   margin: 0.5em;
+
+}
+
+.dropdown-menu-content ul{
+   list-style-type: none;
+}
+
+#list-modal1 .active{
+   display: block;
+   background-color: var(--color-white);
+}
