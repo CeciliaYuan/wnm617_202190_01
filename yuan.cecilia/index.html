@@ -41,11 +41,11 @@
                      <label for="remember-me">Remember Me</label>
                   </div>
                   <div class="pass-link">
-                     <a href="#">Forget password?</a>
+                     <a href="#page-forget">Forget password?</a>
                   </div>
                </div>
                <div class="form-control">
-                  <input type="submit" value="Sign In" class="form-button" data-role="none">
+                  <input type="submit" value="Sign In" class="form-button login-btn" data-role="none">
                </div>
                <div class="signup-link form-control small centered">
                   Not a member? <a href="#page-signup">Signup Now</a>
@@ -56,7 +56,7 @@
    </section>
 
    <section data-role="page" id="page-signup">
-      <div data-role="main" class="wrapper display-flex flex-vertical">
+      <div data-role="main" class="display-flex flex-vertical">
          <div class="log-background"></div>
          <div class="flex-stretch"></div>
          <div class="wrapper">
@@ -77,7 +77,7 @@
                   <input class="form-input" type="password" id="signup-password2" data-role="none" placeholder="Confirm" required>
                </div>
                <div class="form-control">
-                  <input type="submit" value="Sign Up" class="form-button" data-role="none">
+                  <input type="submit" value="Sign Up" class="form-button logout-btn" data-role="none">
                </div>
                <div class="form-control small centered">
                   Already have an account? <a href="#page-signin">Sign In</a>
@@ -87,15 +87,46 @@
       </div> 
    </section>
 
+
+   <section data-role="page" id="page-forget">
+      <header data-role="header">
+         <ul>
+            <li><a href="#" data-rel="back"><i class="fa fa-arrow-left"></i></a></li>
+         </ul> 
+      </header>
+      <div class="data-role=""main">
+         <div class="email-text">
+            <h1>Enter the email address associated with your account.</h1>
+            <p>We will email you a code to reset your password.</p>
+         </div>
+
+
+         <div class="form-control">
+            <input href="#page-code" value="Sent" class="regular-button" data-role="none">
+         </div>
+      </div>
+   </section>
+
+   <section data-role="page" id="page-code">
+      <header data-role="header">
+         <ul>
+            <li><a href="#" data-rel="back"><i class="fa fa-arrow-left"></i></a></li>
+         </ul> 
+      </header>
+      <div class="data-role=""main" >
+         <div class="">
+      </div>
+   </section>
+
+
+
    <section data-role="page" id="page-map" >
       <div data-role="main">
 
              <div class="map"></div>
              <div class="search-box" data-role="none">
-                  <div class="search-btn"><i class="fa fa-search"></i></div>
-                  <div class="search-input">
-                      <input type="text" class="search-input" placeholder="Search">
-               </div>
+               <input type="text" class="search-input" placeholder="Search..." data-role="none">
+               <div class="search-btn"><i class="fa fa-search"></i></div>
              </div>
 
             <div class="floater" style="top:35%; left:65%;">
@@ -116,19 +147,13 @@
          <a href="#page-map-add" class="btn-circle"><i class="fa fa-plus" fa-3x></i></a>
       </div>
 
-         <div class="modal" id="list-modal1">
-            <div class="modal-back" data-deactivate="#list-modal1"></div>
-            <div class="modal-drawer right">
-               <div class="modal-head display-flex">
-                  <div class="flex-stretch">Menu</div>
-                  <div class="flex-none">
-                     <div class="icon" data-deactivate="#list-modal1"><i class="fa fa-close"></i></div>
-                  </div>
-               </div>
-               <div class="modal-body" data-role="menu">
+      <div class="modal" id="list-modal1">
+            <div class="modal-back-dropdown" data-deactivate="#list-modal1"></div>
+            <div class="modal-drawer-dropdown floater right2 bottom2">
+               <div class="modal-dropdown" data-role="none">
                   <ul>
-                     <li><a href="#page-list"><i class="fa fa-folder-o"></i>&nbsp; List</a></li>
-                     <li><a href="#page-user-profile"><i class="fa fa-user-o"></i>&nbsp; User Profile</a></li>
+                     <li><a href="#page-list"><i class="fa fa-folder"></i></a></li>
+                     <li><a href="#page-user-profile"><i class="fa fa-user"></i></a></li>
                   </ul>
                </div>
             </div>
@@ -149,19 +174,20 @@
       </header>
 
       <div data-role="main">
-            <div class="container">
+            <div class="floater overscroll-y fill-parent">
+               <div class="layout">
                <div class="add-image-block">
                   <div class="add-image"><i class="fa fa-camera fa-lg"></i></div>
                      
                </div>
 
                <div class="add-bread-info">
-                  <label for="list-add-name" class="form-label">Name</label>
+                  <label for="list-add-name" class="form-label"></label>
                   <input type="text" id="list-add-name" class="form-input" data-role="none" placeholder="Name">
-                  <label for="list-add-name" class="form-label">Bakery</label>
-                  <input type="text" id="list-add-name" class="form-input" data-role="none" placeholder="Bakery">
-                  <label for="list-add-name" class="form-label">Note</label>
-                  <input type="text" id="list-add-name" class="form-input" data-role="none" placeholder="Note">
+                  <label for="list-add-name" class="form-label"></label>
+                  <input type="text" id="list-add-bakery" class="form-input" data-role="none" placeholder="Bakery">
+                  <label for="list-add-name" class="form-label"></label>
+                  <input type="text" id="list-add-note" class="form-input" data-role="none" placeholder="Note">
                   
                </div>
 
@@ -182,6 +208,7 @@
                   <div class="floater" style="top:80%;left:50%;"><i class="fa fa-map-marker fa-lg"></i></div>
                </div>
             </div>  
+         </div>
       </div>
 
       <footer data-role="footer">
@@ -192,18 +219,12 @@
       </footer>
 
       <div class="modal" id="list-modal2">
-            <div class="modal-back" data-deactivate="#list-modal2"></div>
-            <div class="modal-drawer right">
-               <div class="modal-head display-flex">
-                  <div class="flex-stretch">Menu</div>
-                  <div class="flex-none">
-                     <div class="icon" data-deactivate="#list-modal2"><i class="fa fa-close"></i></div>
-                  </div>
-               </div>
-               <div class="modal-body" data-role="menu">
+            <div class="modal-back-dropdown" data-deactivate="#list-modal2"></div>
+            <div class="modal-drawer-dropdown floater right2 bottom2">
+               <div class="modal-dropdown" data-role="none">
                   <ul>
-                     <li><a href="#page-list"><i class="fa fa-folder-o"></i>&nbsp; List</a></li>
-                     <li><a href="#page-user-profile"><i class="fa fa-user-o"></i>&nbsp; User Profile</a></li>
+                     <li><a href="#page-list"><i class="fa fa-folder"></i></a></li>
+                     <li><a href="#page-user-profile"><i class="fa fa-user"></i></a></li>
                   </ul>
                </div>
             </div>
@@ -212,6 +233,22 @@
 
    <section data-role="page" id="page-list">
       <div data-role="main">
+         <div class="post-content layout" data-role="list">
+            <div class="search-box-top" data-role="none">
+                  <input type="text" class="search-input" placeholder="Search..." data-role="none" style="width: 77vw">
+                  <div class="search-btn"><i class="fa fa-search"></i></div>
+                </div>
+
+               <div class="overscroll-y tag-list">
+                  <div class="tag"><a href="#">All(7)</a> </div>
+                  <div class="tag"><a href="#">White</a></div>
+                  <div class="tag"><a href="#">Wheat</a></div>
+                  <div class="tag"><a href="#">Bagels</a></div>
+                  <div class="tag"><a href="#">Baguette</a></div>
+                  <div class="tag"><a href="#">Croissant</a></div>
+               </div>
+         </div>
+
          <div class="overscroll floater fill-parent" data-role="list">
             <ul class="breadlist">
                <li class="breadlist-item" data-template="#breadlist-item-template"></li>
@@ -228,8 +265,8 @@
             </ul>
          </div>
 
-      <div class="floater bottom right">
-         <a href="#" class="btn-circle" data-activate="#list-add-modal"><i class="fa fa-plus" fa-3x></i></a>
+      <div class="floater top right">
+         <a href="#page-map-add" class="btn-circle-sm"><i class="fa fa-plus" fa-3x></i></a>
       </div>
       </div>
       <footer data-role="footer">
@@ -239,46 +276,16 @@
       </footer>
 
       <div class="modal" id="list-modal3">
-            <div class="modal-back" data-deactivate="#list-modal3"></div>
-            <div class="modal-drawer right">
-               <div class="modal-head display-flex">
-                  <div class="flex-stretch">Menu</div>
-                  <div class="flex-none">
-                     <div class="icon" data-deactivate="#list-modal3"><i class="fa fa-close"></i></div>
-                  </div>
-               </div>
-               <div class="modal-body" data-role="menu">
+            <div class="modal-back-dropdown" data-deactivate="#list-modal3"></div>
+            <div class="modal-drawer-dropdown floater right2 bottom2">
+               <div class="modal-dropdown" data-role="none">
                   <ul>
-                     <li><a href="#page-list"><i class="fa fa-folder-o"></i>&nbsp; List</a></li>
-                     <li><a href="#page-user-profile"><i class="fa fa-user-o"></i>&nbsp; User Profile</a></li>
+                     <li><a href="#page-list"><i class="fa fa-folder"></i></a></li>
+                     <li><a href="#page-user-profile"><i class="fa fa-user"></i></a></li>
                   </ul>
                </div>
             </div>
          </div>
-
-      <div class="modal" id="list-add-modal">
-         <div class="modal-back" data-deactivate="#list-add-modal"></div>
-         <form class="modal-popup form" id="list-add-form" data-ajax="false">
-            <div class="modal-head">Add bread</div>
-            <div class="modal-body">
-               <div class="form-control">
-                  <label for="list-add-name" class="form-label">Name</label>
-                  <input type="text" id="list-add-name" class="form-input" data-role="none" placeholder="Name">
-               </div>
-               <div class="form-control">
-                  <label for="list-add-type" class="form-label">Type</label>
-                  <input type="text" id="list-add-type" class="form-input" data-role="none" placeholder="Name">
-               </div>
-               <div class="form-control">
-                  <label for="list-add-breed" class="form-label">Storn Name</label>
-                  <input type="text" id="list-add-breed" class="form-input" data-role="none" placeholder="Name">
-               </div>
-            </div>
-            <div class="modal-foot">
-               <button type="submit" class="form-button" data-role="none">Save</button>
-            </div>
-         </form>
-      </div>
    </section>
 
    <section data-role="page" id="page-user-profile">
@@ -290,7 +297,7 @@
       </header>
 
       <div data-role="main">
-         <div class="container">
+         <div class="layout">
             <div class="user-info">
                <div class="user-img"><img src="img/user.jpg"></div>
                <div class="user-name">
@@ -313,15 +320,7 @@
             </div>
 
 
-            <div class="overscroll fill-parent" data-role="list">
-               <ul class="postlist">
-                  <li class="postlist-item" data-template="#postlist-item-template"></li>
-                  <li class="postlist-item" data-template="#postlist-item-template"></li>
-                  <li class="postlist-item" data-template="#postlist-item-template"></li>
-                  <li class="postlist-item" data-template="#postlist-item-template"></li>
-                  <li class="postlist-item" data-template="#postlist-item-template"></li>
-               </ul>
-            </div>
+            
          </div>
       </div>
 
@@ -354,8 +353,8 @@
          </ul>
       </header>
       <div data-role="main">
-         
-            <div class="container">
+         <div class="overscroll floater fill-parent">
+            <div class="layout">
                <div class="bread-image">
                   <img src="img/bread2.jpg">
                </div>
@@ -371,26 +370,23 @@
                   <div class="location-address">
                      <p>San Francisco</p>
                      <img src="img/location1.png">
+                  </div>
                </div>
-      </div>
 
       <div class="modal" id="list-modal5">
-            <div class="modal-back" data-deactivate="#list-modal5"></div>
-            <div class="modal-drawer-sm right">
-               <div class="modal-body list-edit" data-role="list">
+            <div class="modal-back-dropdown" data-deactivate="#list-modal5"></div>
+            <div class="modal-drawer-dropdown floater right">
+               <div class="modal-dropdown" data-role="none">
                   <ul>
-                     <li><a href="#"><i class="fa fa-arrow-circle-up"></i>&nbsp; Sticky on Top</a></li>
-                     <li class="line"></li>
-                     <li><a href="#" data-active="#"><i class="fa fa-edit"></i>&nbsp; Edit</a></li>
-                     <li class="line"></li>
-                     <li><a href="#" data-active="#"><i class="fa fa-trash"></i>&nbsp; Delete</a></li>
-                     <li class="line"></li>
+                     <li><a href="#"><i class="fa fa-arrow-circle-up"></i></a></li>
+                     <li><a href="#" data-active="#"><i class="fa fa-edit"></i></a></li>
+                     <li><a href="#" data-active="#"><i class="fa fa-trash"></i></a></li>
                   </ul>
                </div>
             </div>
          </div>
-
-
+      </div>
+      </div>
    </section>
 
       <script type="text/template" id="breadlist-item-template">
