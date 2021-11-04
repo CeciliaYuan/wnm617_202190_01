@@ -2,6 +2,13 @@
 // DOCUMENT READY
 $(()=>{
 
+   query({
+      type:'location_by_id',
+      params:[213]
+   }).then(d=>{
+      console.log(d)
+   })
+
    checkUserId();
 
    // Event Delegation
