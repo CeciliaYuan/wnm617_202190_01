@@ -16,6 +16,9 @@
    <script src="js/app.js"></script>
    <script src="js/signin.js"></script>
    <script src="js/function.js"></script>
+   <script src="js/pages.js"></script>
+   <script src="js/parts.js"></script>
+
 
    <script src="lib/js/jquery.mobile-1.4.5.min.js"></script>
 </head>
@@ -241,7 +244,7 @@
                 </div>
 
                <div class="overscroll-y tag-list">
-                  <div class="tag"><a href="#">All(7)</a> </div>
+                  <div class="tag"><a href="#">All</a> </div>
                   <div class="tag"><a href="#">White</a></div>
                   <div class="tag"><a href="#">Wheat</a></div>
                   <div class="tag"><a href="#">Bagels</a></div>
@@ -250,30 +253,22 @@
                </div>
          </div>
 
-         <div class="overscroll floater fill-parent" data-role="list">
-            <ul class="breadlist">
-               <li class="breadlist-item" data-template="#breadlist-item-template"></li>
-               <li class="breadlist-item" data-template="#breadlist-item-template"></li>
-               <li class="breadlist-item" data-template="#breadlist-item-template"></li>
-               <li class="breadlist-item" data-template="#breadlist-item-template"></li>
-               <li class="breadlist-item" data-template="#breadlist-item-template"></li>
-               <li class="breadlist-item" data-template="#breadlist-item-template"></li>
-               <li class="breadlist-item" data-template="#breadlist-item-template"></li>
-               <li class="breadlist-item" data-template="#breadlist-item-template"></li>
-               <li class="breadlist-item" data-template="#breadlist-item-template"></li>
-               <li class="breadlist-item" data-template="#breadlist-item-template"></li>
-               <li class="breadlist-item" data-template="#breadlist-item-template"></li>
-            </ul>
+         <div class="floater top right">
+            <a href="#page-map-add" class="btn-circle-sm"><i class="fa fa-plus" fa-3x></i></a>
          </div>
 
-      <div class="floater top right">
-         <a href="#page-map-add" class="btn-circle-sm"><i class="fa fa-plus" fa-3x></i></a>
+         <div class="overscroll floater fill-parent" data-role="list">
+            <div class="breadlist"></div>
+         </div>
+      
       </div>
-      </div>
+
+
       <footer data-role="footer">
          <ul>
             <li><a href="#page-map"><i class="fa fa-map-o fa-lg"></i></a></li>
             <li><a href="#" data-activate="#list-modal3"><i class="fa fa-list-ul fa-lg"></i></a></li>
+         </ul>
       </footer>
 
       <div class="modal" id="list-modal3">
@@ -299,28 +294,7 @@
 
       <div data-role="main">
          <div class="layout">
-            <div class="user-info">
-               <div class="user-img"><img src="img/user.jpg"></div>
-               <div class="user-name">
-                  <h1 style="color: var(--color-main-dark);">Cecilia Y.</h1>
-                  <p style="color: var(--color-main-light);">cecilia.ywt@gmail.com</p>
-               </div> 
-               <div class="floater right"><a href="#"  data-activate="#list-modal10"><i class="fa fa-cog fa-lg"></i></a></div>
-           <!-- source from https://www.emojisky.com/desc/8475 --> 
-            </div>
-
-            <div class="post-content" data-role="list">
-               <div class="overscroll-y tag-list">
-                  <div class="tag"><a href="#">All(7)</a> </div>
-                  <div class="tag"><a href="#">White</a></div>
-                  <div class="tag"><a href="#">Wheat</a></div>
-                  <div class="tag"><a href="#">Bagels</a></div>
-                  <div class="tag"><a href="#">Baguette</a></div>
-                  <div class="tag"><a href="#">Croissant</a></div>
-               </div>
-            </div>
-
-
+            <div class="userinfo"></div>
             
          </div>
       </div>
@@ -390,34 +364,6 @@
       </div>
    </section>
 
-      <script type="text/template" id="breadlist-item-template">
-         <a href="#page-bread-profile" class="display-flex">
-            <div class="flex-none breadlist-item-image">
-               <img src="img/bread-img1-thumb.png"
-            </div>
-            <div class="flex-stretch breadlist-item-body ">
-               <div class="breadlist-item-name">Bakery</div>
-               <div class="breadlist-item-location">San Francisco, CA</div>
-            </div>
-            
-         </a>
-   </script>
-
-      <script type="text/template" id="postlist-item-template">
-            <a href="#page-bread-profile">
-                  <div class="flex-none postlist-item-image">
-                     <img src="img/bread1.jpg">
-                  <div class="bread-address">  <i class="fa fa-map-marker" style="color:white;"></i>&nbsp; San Francisco</div>
-                  </div>
-
-               <div class="postlist-item-body ">
-                  <div class="postlist-item-name">Bakery</div>
-                  <div class="postlist-item-tag">Wheat</div>
-               </div>
-               
-            </a>
-      </script>
-
-   
+      
 </body>
 </html>

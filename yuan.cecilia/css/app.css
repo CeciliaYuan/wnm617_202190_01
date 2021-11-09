@@ -702,14 +702,21 @@ a {
 }
 
 .breadlist-item-image img{
-   width: 15%;
-   height: auto;
+   width: 100px;
+   height: 100px;
+   object-fit: cover;
+   vertical-align: middle;
    border-radius: 15px;
 }
 
 .breadlist-item-body{
    padding-left: 1em;
+   padding: 0.5em;
 }
+.breadlist-item-bakery, .breadlist-item-tag{
+   padding-top: 0.5em;
+}
+
 .breadlist-item-right{
    margin-top: 1em;
    margin-right: 0.5em;

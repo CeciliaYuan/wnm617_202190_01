@@ -23,10 +23,10 @@
 ]
 
 
-//animal data
+//bread data
 
 [
-  '{{repeat(50)}}',
+  '{{repeat(100)}}',
   {
     id:'{{index(1)}}',
     user_id: '{{integer(0,10)}}',
@@ -50,10 +50,10 @@
 // location data
 
 [
-  '{{repeat(300)}}',
+  '{{repeat(700)}}',
   {
     id:'{{index(1)}}',
-    animal_id: '{{integer(0,50)}}',
+    bread_id: '{{integer(0,100)}}',
     
     
     lat: '{{floating(37.802256, 37.702672)}}',

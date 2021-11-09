@@ -1,18 +1,20 @@
 
 // DOCUMENT READY
 $(()=>{
-
-   query({
-      type:'location_by_id',
-      params:[213]
-   }).then(d=>{
-      console.log(d)
-   })
-
    checkUserId();
+
 
    // Event Delegation
    $(document)
+
+   .on("pagecontainerbeforeshow",function(event, ui){
+      // Page Routing
+      switch(ui.toPage[0].id) {
+         case "page-list": ListPage(); break;
+         case "page-user-profile": UserProfilePage(); break;
+      }
+   })
+
 
 
    // FORM SUBMITS

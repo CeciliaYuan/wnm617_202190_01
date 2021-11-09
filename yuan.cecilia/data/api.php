@@ -50,26 +50,36 @@ function makeStatement($data) {
       $c = makeConn();
       $t = $data->type;
       $p = $data->params;
-   } catch(Exception $e) {
-      return ["error"=>"Bad Data"];
-   }
 
-   switch($t) {
-      case "users_all":
-         return makeQuery($c,"SELECT * FROM `track_users`",[$p]);
-      case "animals_all":
-         return makeQuery($c,"SELECT * FROM `track_animals`",[$p]);
-      case "users_locations":
-         return makeQuery($c,"SELECT * FROM `track_locations`",[$p]);
+      switch($t) {
+         case "users_all":
+            return makeQuery($c,"SELECT * FROM `track_users`",$p);
+         case "breads_all":
+            return makeQuery($c,"SELECT * FROM `track_breads`",$p);
+         case "locations_all":
+            return makeQuery($c,"SELECT * FROM `track_locations`",$p);
 
-      case "user_by_id":
+         case "user_by_id":
             return makeQuery($c,"SELECT * FROM `track_users` WHERE `id`=?",$p);
-         case "animal_by_id":
-            return makeQuery($c,"SELECT * FROM `track_animals` WHERE `id`=?",$p);
+         case "bread_by_id":
+            return makeQuery($c,"SELECT * FROM `track_breads` WHERE `id`=?",$p);
          case "location_by_id":
             return makeQuery($c,"SELECT * FROM `track_locations` WHERE `id`=?",$p);
 
-      default: return ["error"=>"No Matched Type"];
+         case "breads_by_user_id":
+            return makeQuery($c,"SELECT * FROM `track_breads` WHERE `user_id`=?",$p);
+         case "locations_by_bread_id":
+            return makeQuery($c,"SELECT * FROM `track_locations` WHERE `bread_id`=?",$p);
+
+
+         case "check_signin":
+            return makeQuery($c,"SELECT id FROM `track_users` WHERE `username`=? AND `password`=md5(?)",$p);
+
+
+         default: return ["error"=>"No Matched Type"];
+      }
+   } catch(Exception $e) {
+      return ["error"=>"Bad Data"];
    }
 }
 
