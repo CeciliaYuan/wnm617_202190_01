@@ -9,7 +9,8 @@
 
    <link rel="stylesheet" href="lib/css/jquery.mobile.structure-1.4.5.min.css">
    <link rel="stylesheet" href="css/app.css">
-  <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+   <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
 
    <script src="lib/js/jquery-2.2.4.min.js"></script>
 
@@ -238,8 +239,8 @@
    <section data-role="page" id="page-list">
       <div data-role="main">
          <div class="post-content layout" data-role="list">
-            <div class="search-box-top" data-role="none">
-                  <input type="text" class="search-input" placeholder="Search..." data-role="none" style="width: 77vw">
+            <div class="search-box-top" id="searchBar" data-role="none" data-ajax="false">
+                  <input type="text" class="search-input" id="search" placeholder="Search..." data-role="none" style="width: 77vw">
                   <div class="search-btn"><i class="fa fa-search"></i></div>
                 </div>
 
@@ -258,7 +259,7 @@
          </div>
 
          <div class="overscroll floater fill-parent" data-role="list">
-            <div class="breadlist"></div>
+            <div class="breadlist" id="breadList"></div>
          </div>
       
       </div>
@@ -330,23 +331,14 @@
       <div data-role="main">
          <div class="overscroll floater fill-parent">
             <div class="layout">
-               <div class="bread-image">
-                  <img src="img/bread2.jpg">
-               </div>
-               <div class="bread-info">
-                  <div class="">
-                     <h1>Bread Name</h1>
-                     <h3>Bakery</h3>
-                  </div>
-                  <p>21 October 2021</p>
-               </div>
-
+               <div class="breadprofile"></div>
                <div class="bread-location-sm">
-                  <div class="location-address">
+                     <div class="location-address">
                      <p>San Francisco</p>
                      <img src="img/location1.png">
-                  </div>
+                     </div>
                </div>
+            </div>         
 
       <div class="modal" id="list-modal5">
             <div class="modal-back-dropdown" data-deactivate="#list-modal5"></div>
@@ -361,8 +353,15 @@
             </div>
          </div>
       </div>
-      </div>
+
+   </div>
    </section>
+
+   <script type="text/javascript">
+      function search(){
+
+      }
+   </script>
 
       
 </body>

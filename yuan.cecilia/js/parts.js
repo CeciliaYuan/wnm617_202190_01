@@ -28,3 +28,23 @@ const makeUserProfile = templater((o)=>`
               <!-- source from https://www.emojisky.com/desc/8475 --> 
     </div>
 `);
+
+const makeBreadProfile = templater((o)=>`
+     <div class="display-flex">
+        <div class="bread-image">
+            <img src="${o.img}">
+        </div>
+    </div>
+    <div class="bread-info">
+        <div class="display-flex bread-info-name">
+            <h1>${o.name}</h1>
+            <h4>${o.tag}</h4>
+        </div>
+            <h3 data-role="none">Bakery :${o.bakery}</h3>
+            
+        </div>
+        <p>${o.date_create}</p>
+        <p>${o.description}</p>
+    </div>
+
+`);

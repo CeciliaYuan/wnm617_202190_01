@@ -32,3 +32,15 @@ const UserProfilePage = async() => {
    $("#page-user-profile .userinfo").html(makeUserProfile(user));
 }
 
+const BreadProfilePage = async() => {
+   let {result,error} = await query({type:'bread_by_id',params:[sessionStorage.userId]});
+
+   if(error) {
+      console.log(error);
+      return;
+   }
+
+   let [bread] =result;
+
+   $("#page-bread-profile .breadprofile").html(makeBreadProfile(bread));
+}

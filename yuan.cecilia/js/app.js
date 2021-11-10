@@ -12,6 +12,7 @@ $(()=>{
       switch(ui.toPage[0].id) {
          case "page-list": ListPage(); break;
          case "page-user-profile": UserProfilePage(); break;
+         case "page-bread-profile": BreadProfilePage(); break;
       }
    })
 
@@ -56,6 +57,7 @@ $(()=>{
       let target = $(this).data("template");
       $(this).html($(target).html());
    })
+
 
 
 });
