@@ -13,6 +13,9 @@ $(()=>{
          case "page-list": ListPage(); break;
          case "page-user-profile": UserProfilePage(); break;
          case "page-bread-profile": BreadProfilePage(); break;
+         case "page-map": MapPage(); break;
+         case "page-map-add": MapAddPage(); break;
+
       }
    })
 
@@ -58,6 +61,8 @@ $(()=>{
       $(this).html($(target).html());
    })
 
+   // Search function
+ 
 
 
 });

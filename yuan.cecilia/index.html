@@ -19,6 +19,8 @@
    <script src="js/function.js"></script>
    <script src="js/pages.js"></script>
    <script src="js/parts.js"></script>
+   <script src="js/map.js"></script>
+
 
 
    <script src="lib/js/jquery.mobile-1.4.5.min.js"></script>
@@ -128,17 +130,20 @@
    <section data-role="page" id="page-map" >
       <div data-role="main">
 
+            <div class="map-frame">
              <div class="map"></div>
+          </div>
              <div class="search-box" data-role="none">
                <input type="text" class="search-input" placeholder="Search..." data-role="none">
                <div class="search-btn"><i class="fa fa-search"></i></div>
              </div>
 
-            <div class="floater" style="top:35%; left:65%;">
+            <!-- <div class="floater" style="top:35%; left:65%;">
                 <a href="#" data-active="" class="ui-link">
                   <i class="fa fa-map-marker fa-2x"></i>
                </a>
-             </div>
+             </div> -->
+             
          </div>
       </div>
       <footer data-role="footer">
@@ -209,8 +214,8 @@
 
 
                <div class="bread-location">
-                  <img src="img/location.png">
-                  <div class="floater" style="top:80%;left:50%;"><i class="fa fa-map-marker fa-lg"></i></div>
+                  <div class="map" id="map-location">
+                  </div>
                </div>
             </div>  
          </div>
@@ -319,6 +324,7 @@
    </section>
 
    <section data-role="page" id="page-bread-profile">
+
       <header data-role="header">
          <ul>
             <li><a href="#" data-rel="back"><i class="fa fa-arrow-left"></i></a></li>
@@ -328,14 +334,31 @@
             </li>
          </ul>
       </header>
+
       <div data-role="main">
          <div class="overscroll floater fill-parent">
             <div class="layout">
-               <div class="breadprofile"></div>
+               <div class="breadprofile">
+                  <!--  <div class="display-flex">
+                       <div class="bread-image">
+                           <img src="${o.img}">
+                       </div>
+                   </div>
+                   <div class="bread-info">
+                       <div class="display-flex bread-info-name">
+                           <h1>${o.name}</h1>
+                           <h4>${o.tag}</h4>
+                       </div>
+                           <h3 data-role="none">Bakery :${o.bakery}</h3>
+                           
+                       </div>
+                       <p>${o.date_create}</p>
+                       <p>${o.description}</p> -->
+                   </div>
                <div class="bread-location-sm">
                      <div class="location-address">
                      <p>San Francisco</p>
-                     <img src="img/location1.png">
+                     <div class="map"></div>
                      </div>
                </div>
             </div>         
@@ -357,12 +380,14 @@
    </div>
    </section>
 
-   <script type="text/javascript">
-      function search(){
+   <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArNJvb0Nmt7tqGfoC1XzLAv3UWtjLJjys"
+      async
+    >
+       
 
-      }
-   </script>
 
-      
+    </script>
+
 </body>
 </html>

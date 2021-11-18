@@ -48,8 +48,8 @@ function makeQuery($c,$ps,$p,$makeResults=true) {
 function makeStatement($data) {
    try{
       $c = makeConn();
-      $t = $data->type;
-      $p = $data->params;
+      $t = @$data->type;
+      $p = @$data->params;
 
       switch($t) {
          case "users_all":
@@ -74,6 +74,31 @@ function makeStatement($data) {
 
          case "check_signin":
             return makeQuery($c,"SELECT id FROM `track_users` WHERE `username`=? AND `password`=md5(?)",$p);
+
+
+         case "recent_bread_locations":
+            return makeQuery($c,"SELECT * 
+               FROM `track_breads` a 
+               JOIN (
+                  SELECT lg.*
+                  FROM `track_locations` lg
+                  WHERE lg.id = (
+                     SELECT lt. id
+                     FROM`track_locations` lt
+                     WHERE lt.bread_id = lg.bread_id
+                     ORDER BY lt.date_create DESC
+                     LIMIT 1
+                     )
+                  ) l
+               ON a.id = l.bread_id
+               WHERE a.user_id = ?
+               ORDER BY l.bread_id, l.date_create DESC
+               ",$p);
+
+
+
+         case "breads_tag":
+            return makeQuery($c,"SELECT * FROM `track_breads` WHERE `bread_id`=?",$p);
 
 
          default: return ["error"=>"No Matched Type"];
