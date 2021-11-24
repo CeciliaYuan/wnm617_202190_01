@@ -15,7 +15,8 @@ $(()=>{
          case "page-bread-profile": BreadProfilePage(); break;
          case "page-map": MapPage(); break;
          case "page-map-add": MapAddPage(); break;
-
+         case "page-bread-edit": BreadEditPage(); break;
+         case "page-edit-profile": UserEditPgae(); break;
       }
    })
 
@@ -37,6 +38,13 @@ $(()=>{
       sessionStorage.removeItem("userId");
       checkUserId();
    })
+
+    .on("click",".bread-jump",function(e) {
+      if(!$(this).data("id")) throw("No ID on element");
+      sessionStorage.breadId = $(this).data("id");
+      $.mobile.navigate("#page-bread-profile");
+   })
+
 
 
 

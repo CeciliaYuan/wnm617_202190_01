@@ -94,6 +94,7 @@
       </div> 
    </section>
 
+ <!--  forget password page -->
 
    <section data-role="page" id="page-forget">
       <header data-role="header">
@@ -101,16 +102,21 @@
             <li><a href="#" data-rel="back"><i class="fa fa-arrow-left"></i></a></li>
          </ul> 
       </header>
-      <div class="data-role=""main">
+      <div data-role="main">
          <div class="email-text">
             <h1>Enter the email address associated with your account.</h1>
-            <p>We will email you a code to reset your password.</p>
+            <p>We will email you a verification code to reset your password.</p>
          </div>
 
-
+         <form data-ajax="false" class="form forget-form" id="forget-form" style="padding:20px">
+            <div class="form-control">
+               <input class="form-input" type="email" data-role="none" placeholder="Enter Your Email address" required>
+            </div>
+         </form>
          <div class="form-control">
-            <input href="#page-code" value="Sent" class="regular-button" data-role="none">
+            <a href="#page-code"><input type="" value="Sent" class="form-button logout-btn" data-role="none"></a>
          </div>
+
       </div>
    </section>
 
@@ -120,18 +126,59 @@
             <li><a href="#" data-rel="back"><i class="fa fa-arrow-left"></i></a></li>
          </ul> 
       </header>
-      <div class="data-role=""main" >
-         <div class="">
+      <div data-role="main" >
+         <div class="email-text">
+            <h1>Enter your verification code</h1>
+            <p>The verification code has been sent to your email</p>
+         </div>
+
+         <form data-ajax="false" class="form forget-form" id="code-form" style="padding:20px">
+            <div class="form-control">
+               <input class="form-input" type="text" data-role="none" placeholder="Enter Your Verification Code" required>
+            </div>
+         </form>
+         <div class="form-control">
+            <a href="#page-reset-password"><input type="" value="Verification" class="form-button logout-btn" data-role="none"></a>
+         </div>
+
+      </div>
+      </div>
+   </section>
+
+    <section data-role="page" id="page-reset-password">
+      <header data-role="header">
+         <ul>
+            <li><a href="#" data-rel="back"><i class="fa fa-arrow-left"></i></a></li>
+         </ul> 
+      </header>
+      <div data-role="main" >
+         <div class="email-text">
+            <h1>Reset your password</h1>
+         </div>
+
+         <form data-ajax="false" class="form forget-form" id="reset-password-form" style="padding:20px">
+            <div class="form-control">
+                  <input class="form-input" type="password" id="reset-password" data-role="none" placeholder="Password" required>
+               </div>
+               <div class="form-control">
+                  <input class="form-input" type="password" id="reset-password2" data-role="none" placeholder="Confirm" required>
+               </div>
+         </form>
+         <div class="form-control">
+            <a href="#page-signin"><input type="" value="Done" class="form-button logout-btn" data-role="none"></a>
+         </div>
+
+      </div>
       </div>
    </section>
 
 
-
+<!--  Map Page -->
    <section data-role="page" id="page-map" >
       <div data-role="main">
 
             <div class="map-frame">
-             <div class="map"></div>
+             <div class="map map-conainer"></div>
           </div>
              <div class="search-box" data-role="none">
                <input type="text" class="search-input" placeholder="Search..." data-role="none">
@@ -170,6 +217,8 @@
          </div>
    </section>
 
+
+   <!-- Map Add Page -->
    <section data-role="page" id="page-map-add">
       <header data-role="header">
          <h1>Add bread</h1>
@@ -177,7 +226,7 @@
             <li><a href="#" data-rel="back"><i class="fa fa-arrow-left"></i></a></li>
             <li class="flex-stretch"></li>
             <li class="save">
-               <a href="#page-list" class="ui-link save-icon">save</a>
+               <a href="#page-list" class="ui-link save-icon">Save</a>
             </li>
          </ul>
          
@@ -191,13 +240,24 @@
                      
                </div>
 
-               <div class="add-bread-info">
+              <!--  <form class="form fill-parent display-flex flex-vertical" data-ajax="false"  id="bread-edit-form">
+                     <div class="flex-stretch position-relative">
+                        <div class="fill-parent  position-absolute">
+                        <div id="bread-edit-input-box"></div>
+                        </div>
+                     </div>
+            
+                  </form> -->
+
+               <div class="add-bread-info" id="bread-add-form">
+                  <div class="fill-parent">
                   <label for="list-add-name" class="form-label"></label>
                   <input type="text" id="list-add-name" class="form-input" data-role="none" placeholder="Name">
                   <label for="list-add-name" class="form-label"></label>
                   <input type="text" id="list-add-bakery" class="form-input" data-role="none" placeholder="Bakery">
-                  <label for="list-add-name" class="form-label"></label>
-                  <input type="text" id="list-add-note" class="form-input" data-role="none" placeholder="Note">
+                  <label for="list-add-name" class="form-label"></label> 
+                  <textarea type="text" id="list-add-note" class="form-input" data-role="none" placeholder="Description"></textarea>
+               </div>
                   
                </div>
 
@@ -214,7 +274,7 @@
 
 
                <div class="bread-location">
-                  <div class="map" id="map-location">
+                  <div class="map add-map-conainer">
                   </div>
                </div>
             </div>  
@@ -240,6 +300,8 @@
             </div>
          </div>
    </section>   
+
+  <!--  List Page -->
 
    <section data-role="page" id="page-list">
       <div data-role="main">
@@ -290,6 +352,8 @@
          </div>
    </section>
 
+  <!--  User Profile Page  -->
+
    <section data-role="page" id="page-user-profile">
       <header data-role="header">
          <h1>Profile</h1>
@@ -301,6 +365,27 @@
       <div data-role="main">
          <div class="layout">
             <div class="userinfo"></div>
+
+            <div class="content-info display-flex">
+               <div class="display-flex card">
+                  <div class="total-card">
+                     <p class="total-number">10</p>
+                     <p class="total-name">Bread</p>
+                  </div>
+               </div>
+               <div class="display-flex card">
+                  <div class="total-card">
+                     <p class="total-number">3</p>
+                     <p class="total-name">Tag</p>
+                  </div>
+               </div>
+               <div class="display-flex card">
+                  <div class="total-card">
+                     <p class="total-number">29</p>
+                     <p class="total-name">Location</p>
+                  </div>
+               </div>
+            </div>
             
          </div>
       </div>
@@ -315,6 +400,11 @@
                   </div>
                </div>
                <div class="modal-body">
+
+                  <div class="setting-content">
+                     <div class="">
+                        <a class="edit-info" href="#page-edit-profile"><i class="fa fa-edit"></i>&nbsp;Edit</a>
+                     </div>
                   <div>
                      <button class="form-button logout-btn js-logout" data-role="none">Log Out</button>
                   </div>
@@ -322,6 +412,32 @@
             </div>
          </div>
    </section>
+
+
+   <section class="" data-role="page" id="page-edit-profile">
+      <header data-role="header">
+                  <h1></h1>
+                  <ul>
+                     <li><a href="#" data-rel="back">Cancel</a></li>
+                      <li class="flex-stretch"></li>
+                     <li class="save">
+                     <a href="#page-user-profile" class="ui-link save-icon">Save</a>
+                      </li>
+                  </ul>
+         </header>
+      <div class="overscroll-x" data-role="main">
+         <form class="form fill-parent display-flex flex-vertical" data-ajax="false"  id="user-edit-form">
+            <div class="flex-stretch position-relative">
+               <div class="fill-parent overscroll position-absolute">
+                  <h1 class="edit-profile-title">Edit your information.</h1>
+                  <div id="user-edit-input-box"></div>
+               </div>
+            </div>
+            
+         </form>
+   </section>
+
+<!--    Bread Profile Page -->
 
    <section data-role="page" id="page-bread-profile">
 
@@ -339,26 +455,25 @@
          <div class="overscroll floater fill-parent">
             <div class="layout">
                <div class="breadprofile">
-                  <!--  <div class="display-flex">
+                   <div class="display-flex">
                        <div class="bread-image">
-                           <img src="${o.img}">
+                           <img src="">
                        </div>
                    </div>
                    <div class="bread-info">
                        <div class="display-flex bread-info-name">
-                           <h1>${o.name}</h1>
-                           <h4>${o.tag}</h4>
+                           <h1 class="bread_name">name</h1>
+                           <h4 class="bread_tag">tag</h4>
                        </div>
-                           <h3 data-role="none">Bakery :${o.bakery}</h3>
+                           <h3 data-role="none" class="bread_bakery">Bakery </h3>
                            
                        </div>
-                       <p>${o.date_create}</p>
-                       <p>${o.description}</p> -->
+                       <p class="bread_date_create">date</p>
+                       <p class="bread_description">description</p>
                    </div>
                <div class="bread-location-sm">
                      <div class="location-address">
-                     <p>San Francisco</p>
-                     <div class="map"></div>
+                     <div class="map profile-map-conainer"></div>
                      </div>
                </div>
             </div>         
@@ -369,23 +484,90 @@
                <div class="modal-dropdown" data-role="none">
                   <ul>
                      <li><a href="#"><i class="fa fa-arrow-circle-up"></i></a></li>
-                     <li><a href="#" data-active="#"><i class="fa fa-edit"></i></a></li>
-                     <li><a href="#" data-active="#"><i class="fa fa-trash"></i></a></li>
+                     <li><a href="#page-bread-edit" data-active="#"><i class="fa fa-edit"></i></a></li>
+                     <li><a href="#list-modal6" data-active="#"><i class="fa fa-trash"></i></a></li>
                   </ul>
                </div>
             </div>
          </div>
+
+         <div class="modal" id="list-modal">
+            
+            <div class="modal-drawer-dropdown floater bottom">
+               <div class="modal-dropdown" data-role="none">
+                 
+               </div>
+            </div>
+         </div>
+
+
       </div>
 
    </div>
    </section>
 
+ <!--   Bread edit Page -->
+    <section data-role="page" id="page-bread-edit">
+         <header data-role="header">
+                  <h1>Edit Bread</h1>
+                  <ul>
+                     <li><a href="#" data-rel="back">Cancel</a></li>
+                      <li class="flex-stretch"></li>
+                     <li class="save">
+                     <a href="#page-list" class="ui-link save-icon">Save</a>
+                      </li>
+                  </ul>
+         </header>
+
+         <div data-role="main">
+            <div class="floater overscroll-y fill-parent"" data-ajax="false">
+               <div class="layout">
+                  <div class="add-image-block">
+                     <div class="add-image"><i class="fa fa-camera fa-lg"></i></div>
+                        
+                  </div>
+
+                  <form class="form fill-parent display-flex flex-vertical" data-ajax="false"  id="bread-edit-form">
+                     <div class="flex-stretch position-relative">
+                        <div class="fill-parent  position-absolute">
+                        <div id="bread-edit-input-box"></div>
+                        </div>
+                     </div>
+            
+                  </form>
+
+                  <!-- <div class="add-bread-info id="bread-edit-form">
+                     <div class="fill-parent">
+                     </div>
+                     <label for="list-edit-name" class="form-label"></label>
+                     <input type="text" id="list-edit-name" class="form-input" data-role="none" placeholder="Name">
+                     <label for="list-edit-bakery" class="form-label"></label>
+                     <input type="text" id="list-edit-bakery" class="form-input" data-role="none" placeholder="Bakery">
+                     <label for="list-edit-description" class="form-label"></label> 
+                     <textarea type="text" id="list-edit-description" class="form-input" data-role="none" placeholder="Description"></textarea>
+                     
+                  </div> -->
+
+                  <div class="post-content" data-role="list">
+                     <div class="overscroll-y tag-list">
+                        <div class="tag"><a href="#">White</a></div>
+                        <div class="tag"><a href="#">Wheat</a></div>
+                        <div class="tag"><a href="#">Bagels</a></div>
+                        <div class="tag"><a href="#">Baguette</a></div>
+                        <div class="tag"><a href="#">Croissant</a></div>
+                        <div class="tag" style="font-size: 1em;"><a href="#">+</a></div>
+                     </div>
+                  </div>
+               </div>
+            </div>  
+      </div>
+
+      </section>
+
    <script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArNJvb0Nmt7tqGfoC1XzLAv3UWtjLJjys"
       async
     >
-       
-
 
     </script>
 
