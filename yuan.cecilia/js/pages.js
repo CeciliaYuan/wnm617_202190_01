@@ -94,11 +94,19 @@ const BreadProfilePage = async() => {
    $(".bread_description").text(bread.description);
 }
 
-const MapAddPage = async() =>{
+const BreadAddPage = async() =>{
    
-   let mapEl = await makeMap("#page-map-add .map");
-   }
+   // let mapEl = await makeMap("#page-map-add .map");
 
+   $("#bread-add-form .fill-parent").html(
+      makeBreadFormInputs({
+         name:'',
+         bakery:'',
+         tag:'',
+         description:''
+      },"bread-add")
+   );
+}
 
 // const BreadEditPage = async() => {
 //    let bread_result = await resultQuery({
@@ -136,3 +144,31 @@ const UserEditPgae = async() => {
    (makeUserFormInputs(user, "user-edit"));
 
 }
+
+const LocationSetLocationPage = async() =>{
+   let mapEl = await makeMap("#page-add-location .map");
+   makeMarkers(mapEl,[]);
+
+   mapEl.data("map").addListener("click",function(e){
+      $("#location-lat").val(e.latLng.lat())
+      $("#location-lng").val(e.latLng.lng())
+      makeMarkers(mapEl,[e.latLng]);
+   })
+}
+
+const LocationChooseBreadPage = async() => {
+   let result = await resultQuery({
+      type:'breads_by_user_id',
+      params:[sessionStorage.userId]
+   });
+
+   console.log(result)
+
+   $(".location-bread-choice-select").html(
+      makeBreadChoiceSelect({
+         animals:result,
+         name:'location-bread-choice-select'
+      })
+   );
+}
+

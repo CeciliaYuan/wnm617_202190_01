@@ -14,9 +14,11 @@ $(()=>{
          case "page-user-profile": UserProfilePage(); break;
          case "page-bread-profile": BreadProfilePage(); break;
          case "page-map": MapPage(); break;
-         case "page-map-add": MapAddPage(); break;
+         case "page-map-add": BreadAddPage(); break;
          case "page-bread-edit": BreadEditPage(); break;
          case "page-edit-profile": UserEditPgae(); break;
+         case "page-add-location": LocationSetLocationPage(); break;
+         case "page-map-location-add" : LocationChooseBreadPage(); break;
       }
    })
 
@@ -32,6 +34,21 @@ $(()=>{
    })
 
 
+   .on("submit", "#signup-form", function(e) {
+      e.preventDefault();
+      userAddForm();
+   })
+
+   // .on("submit", "#bread-add-form", function(e) {
+   //    e.preventDefault();
+   //    breadAddForm();
+   // })
+   // .on("submit", "#bread-edit-form", function(e) {
+   //    e.preventDefault();
+   //    breadEditForm();
+   // })
+
+
    // ANCHOR CLICKS
    .on("click",".js-logout",function(e) {
       e.preventDefault();
@@ -39,11 +56,41 @@ $(()=>{
       checkUserId();
    })
 
+
     .on("click",".bread-jump",function(e) {
       if(!$(this).data("id")) throw("No ID on element");
       sessionStorage.breadId = $(this).data("id");
       $.mobile.navigate("#page-bread-profile");
    })
+
+
+   // FORM ANCHOR CLICKS
+
+    .on("click",".js-submituseredit",function(e) {
+      e.preventDefault();
+      userEditForm();
+   })
+
+     .on("click",".js-submituserpassword",function(e) {
+      e.preventDefault();
+      userEditPasswordForm();
+   })
+
+     .on("click",".js-submitlocationform",function(e) {
+      e.preventDefault();
+      locationAddForm();
+   })
+
+     .on("click",".js-saveaddbreadform",function(e){
+      e.preventDefault();
+      breadAddForm();
+   })
+
+     .on("click",".js-breadeditform",function(e){
+      e.preventDefault();
+      breadEditForm();
+   })
+
 
 
 
@@ -70,7 +117,58 @@ $(()=>{
    })
 
    // Search function
- 
+
+   .on("submit","#searchBar",function(e){
+      e.preventDefault();
+      let search = $("#search").val();
+      if(search=="") {
+         showListPage();
+      } else {
+         query({
+            type:'breads_search',
+            params:[
+               sessionStorage.userId
+            ]
+         }).then(d=>{
+            if(d.error) throw d.error;
+            else showListPage(d.result);
+         })
+      }
+   })
+
+
+
+   // filter function
+
+  // .on("click",".filter",function(e){
+  //     let column = $(this).data("column");
+  //     let filter = $(this).data("value");
+  //     if(filter=="") {
+  //        showListPage();
+  //     } else {
+  //        query({
+  //           type:'filter_breads',
+  //           params:[
+  //              filter,
+  //              sessionStorage.userId,
+  //              column
+  //           ]
+  //        }).then(d=>{
+  //           if(d.error) throw d.error;
+  //           else showListPage(d.result);
+  //        })
+  //     }
+  //  })
+
+
+  // On Change
+
+  .on("change","#location-bread-choice-select",function(e){
+      $("#location-bread-choice").val(this.value)
+   })
 
 
 });
+
+
+

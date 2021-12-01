@@ -98,7 +98,92 @@ function makeStatement($data) {
 
 
          case "breads_tag":
-            return makeQuery($c,"SELECT * FROM `track_breads` WHERE `bread_id`=?",$p);
+            return makeQuery($c,"SELECT * FROM `track_breads` WHERE `tag`=? AND `user_id`=?",$p);
+
+         case "breads_search":
+            return makeQuery($c,"SELECT * FROM `track_breads` WHERE `name` LIKE ? AND `user_id`=?",$p);
+
+
+
+         /* CREATE */
+
+         case "insert_user":
+            $r = makeQuery($c,"SELECT id FROM `track_users` WHERE `username`=? OR `email` = ?",$p);
+            if(count($r['result'])) return ["error"=>"Username or Email already exists"];
+
+            $r = makeQuery($c,"INSERT INTO
+               `track_users`
+               (`name`,`username`, `email`, `password`, `img`, `date_create`)
+               VALUES
+               (?, ?, ?, md5(?), 'http://via.placeholder.com/400/?text=USER', NOW())
+               ",$p,false);
+            return ["id" => $c->lastInsertId()];
+
+
+
+         case "insert_bread":
+            $r = makeQuery($c,"INSERT INTO
+               `track_breads`
+               (`user_id`, `name`, `bakery`, `tag`, `description`, `img`, `date_create`)
+               VALUES
+               (?, ?, ?, ?, ?, 'http://via.placeholder.com/400/?text=BREAD', NOW())
+               ",$p,false);
+            return ["id" => $c->lastInsertId()];
+
+
+         case "insert_location":
+            $r = makeQuery($c,"INSERT INTO
+               `track_locations`
+               (`bread_id`, `lat`, `lng`, `description`, `photo`, `icon`, `date_create`)
+               VALUES
+               (?, ?, ?, ?, 'http://via.placeholder.com/400/?text=PHOTO', 'https://ceciliayuan.com/aau/wnm617/yuan.cecilia/img/bread.svg', NOW())
+               ",$p,false);
+            return ["id" => $c->lastInsertId()];
+
+
+         /* UPDATE */
+
+         case "update_user":
+            $r = makeQuery($c,"UPDATE
+               `track_users`
+               SET
+                  `username` = ?,
+                  `name` = ?,
+                  `email` = ?
+               WHERE `id` = ?
+               ",$p,false);
+            return ["result" => "success"];
+
+         case "update_user_password":
+            $r = makeQuery($c,"UPDATE
+               `track_users`
+               SET
+                  `password` = md5(?)
+               WHERE `id` = ?
+               ",$p,false);
+            return ["result" => "success"];
+
+         case "update_bread":
+            $r = makeQuery($c,"UPDATE
+               `track_breads`
+               SET
+                  `name` = ?,
+                  `bakery` = ?,
+                  `tag` = ?,
+                  `description` = ?
+               WHERE `id` = ?
+               ",$p,false);
+            return ["result" => "success"];
+
+         case "update_location":
+            $r = makeQuery($c,"UPDATE
+               `track_locations`
+               SET
+                  `description` = ?
+               WHERE `id` = ?
+               ",$p,false);
+            return ["result" => "success"];
+
 
 
          default: return ["error"=>"No Matched Type"];

@@ -201,6 +201,10 @@ a {
    padding: 0;
 }
 
+textarea{
+   min-height: 5em;
+}
+
 /* FORM ELEMENTS */
 .form {}
 .form-control {
@@ -289,6 +293,39 @@ a {
     box-shadow: inset 0.2rem 0.2rem 0.5rem var(--color-neutral-light-2), inset -0.2rem -0.2rem 0.5rem var(--color-white);
 }
 
+
+.edit-add-form .form-input,  .description-add .form-input{
+    width: 100%;
+    height: 2.5em;
+    display: inline-block;
+    border: none;
+    border-radius: 0.5em;
+    box-shadow: inset 0.2rem 0.2rem 0.5rem var(--color-neutral-light), inset -0.2rem -0.2rem 0.5rem var(--color-white);;
+    margin: 0;
+    padding: 0.5em 1em;
+    outline: 0;
+    font-family: inherit;
+    color: var(--color-main-medium);
+    font-size: 1rem;
+}
+
+.edit-add-form .form-input, .description-add .form-input::placeholder {
+  color: var(--color-neutral-light-2);
+}
+
+.edit-add-form .form-input, .description-add .form-input:focus {
+   outline: none;
+   box-shadow: 0.3rem 0.3rem 0.6rem var(--color-neutral-light), -0.2rem -0.2rem 0.5rem var(--color-white);
+}
+
+.edit-add-form .form-input, .description-add .form-input:focus ::placeholder {
+   color: var(--color-main-medium);
+}
+
+label.form-label{
+   padding-bottom: 0.5em;
+}
+
 /* login Page */
 .log-background{
    position: absolute;
@@ -299,6 +336,21 @@ a {
    background-image: url(../img/login-img.jpg);
    background-size: cover;
    background-position: center;
+}
+.log-name{
+    z-index: 1;
+    width: 80%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 35vh;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 1.5em;
+    border-radius: 20px;
+}
+
+.log-name img{
+   width: 100%;
 }
 
 .wrapper{
@@ -352,6 +404,10 @@ a {
    left: 0;
    position: absolute;
 
+}
+
+.map-half{
+   height: 30em;
 }
 
 .map-frame{
@@ -446,6 +502,7 @@ a {
 
 /* Floater */
 .floater { position:absolute; }
+.floater-inside {padding: 1em;}
 .floater.left { left:1em; }
 .floater.right { right:1em; }
 .floater.top { top:1em; }
@@ -630,12 +687,17 @@ a {
 
 
 .setting-content .logout-btn{
-   margin-top: 19em;
+   margin-top: 16em;
 }
 
 .edit-info .fa{
    color: var(--color-main-medium);
    padding-right: 0.5em;
+   width: 20px;
+   height: auto;
+}
+.setting-list{
+   padding-bottom: 1em;
 }
 
 .tag-list {
@@ -657,7 +719,7 @@ a {
    font-weight: 800;
 }
 
-.tag{
+.filter{
    margin: 0.5em;
    padding: 0.3em;
    padding-left: 0.5em;
@@ -669,12 +731,12 @@ a {
    font-size: 0.9em;
 }
 
-.tag:active {
+.filter:active {
    color: var(--color-white);
    background-color: var(--color-main-medium);
 }
 
-.tag:hover{
+.filter:hover{
    color: var(--color-white);
    background-color: var(--color-main-medium);
 }
@@ -838,6 +900,10 @@ a {
 
 }
 
+.location-address{
+   display: flex;
+}
+
 .bread-location-sm{
    background-color: rgba(0, 0, 0, 0.1);
    border-radius: 10px 10px 0 0 ;
@@ -997,3 +1063,4 @@ a {
    outline: none;
    box-shadow: 0.3rem 0.3rem 0.6rem var(--color-neutral-light-2), -0.2rem -0.2rem 0.5rem var(--color-white);
 }
+

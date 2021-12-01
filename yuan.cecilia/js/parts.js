@@ -64,14 +64,14 @@ const makeBreadPopup = o => `
 
 const FormControlInput = ({namespace,name,displayname,type,placeholder,value}) => `
 <div class="form-control">
-   <label for="${namespace}-${name}" class="form-label"></label>
-   <input type="${type}" id="${namespace}-${name}" class="form-input" data-role="none" placeholder="" value="${value}">
+   <label for="${namespace}-${name}" class="form-label">${displayname}</label>
+   <input type="${type}" id="${namespace}-${name}" class="form-input" data-role="none" placeholder="${placeholder}" value="${value}">
 </div>
 `;
 
 const FormControlTextarea = ({namespace,name,displayname,placeholder,value}) => `
 <div class="form-control">
-   <label for="${namespace}-${name}" class="form-label"></label>
+   <label for="${namespace}-${name}" class="form-label">${displayname}</label>
    <textarea id="${namespace}-${name}" class="form-input" data-role="none" placeholder="${placeholder}">${value}</textarea>
 </div>
 `;
@@ -82,7 +82,7 @@ const makeBreadFormInputs = (o,namespace) => `
 ${FormControlInput({
    namespace:namespace,
    name:"name",
-   // displayname:"Name",
+   displayname:"Name",
    type:"text",
    placeholder:"Type The Bread Name",
    value:o.name
@@ -91,15 +91,27 @@ ${FormControlInput({
 ${FormControlInput({
    namespace:namespace,
    name:"bakery",
-   // displayname:"bakery",
+   displayname:"Bakery",
    type:"text",
    placeholder:"Type The Bread Bakery",
    value:o.bakery
 })}
+
+${FormControlInput({
+   namespace:namespace,
+   name:"tag",
+   displayname:"Tag",
+   type:"text",
+   placeholder:"Type The Bread tag",
+   value:o.tag
+})}
+
+
+
 ${FormControlTextarea({
    namespace:namespace,
    name:"description",
-   // displayname:"Description",
+   displayname:"Description",
    placeholder:"Type The Bread Description",
    value:o.description
 })}
@@ -119,18 +131,28 @@ ${FormControlInput({
 ${FormControlInput({
    namespace:namespace,
    name:"username",
-   displayname:"Type",
+   displayname:"Username",
    type:"text",
    placeholder:"Type The User Handle",
    value:o.username
 })}
 ${FormControlInput({
    namespace:namespace,
-   name:"username",
-   displayname:"Type",
+   name:"email",
+   displayname:"Email",
    type:"text",
    placeholder:"Type The User Email",
    value:o.email
 })}
 
+`;
+
+
+
+const makeBreadChoiceSelect = ({breads,name,chosen=0}) => `
+<select id="${name}">
+   ${templater(o=>`
+      <option value="${o.id}" ${o.id===chosen?'selected':''}>${o.name}</option>
+   `)(breads)}
+</select>
 `;
