@@ -45,6 +45,20 @@ function makeQuery($c,$ps,$p,$makeResults=true) {
    }
 }
 
+function makeUpload($file,$folder) {
+   $filename = microtime(true) . "_" . $_FILES[$file]['name'];
+
+   if(@move_uploaded_file(
+      $_FILES[$file]['tmp_name'],
+      $folder.$filename
+   )) return ['result'=>$filename];
+   else return [
+      "error"=>"File Upload Failed",
+      "_FILES"=>$_FILES,
+      "filename"=>$filename
+   ];
+}
+
 function makeStatement($data) {
    try{
       $c = makeConn();
@@ -97,11 +111,26 @@ function makeStatement($data) {
 
 
 
-         case "breads_tag":
-            return makeQuery($c,"SELECT * FROM `track_breads` WHERE `tag`=? AND `user_id`=?",$p);
+         
 
          case "breads_search":
-            return makeQuery($c,"SELECT * FROM `track_breads` WHERE `name` LIKE ? AND `user_id`=?",$p);
+            $p = ["%$p[0]%",$p[1]];
+            return makeQuery($c,"SELECT *
+               FROM `track_breads`
+               WHERE
+                  `name` LIKE ? AND
+                  `user_id` = ?
+               ",$p);
+
+
+            case "breads_tag_filter":
+            return makeQuery($c,"SELECT *
+               FROM `track_breads`
+               WHERE
+                  `$p[0]` = ? AND
+                  `user_id` = ?
+               ",[$p[1],$p[2]]);
+
 
 
 
@@ -185,12 +214,44 @@ function makeStatement($data) {
             return ["result" => "success"];
 
 
+         case "update_user_image":
+            $r = makeQuery($c,"UPDATE
+               `track_users`
+               SET
+                  `img` = ?
+               WHERE `id` = ?
+               ",$p,false);
+            return ["result" => "success"];
+
+
+            /* DELETE */
+         case "delete_bread":
+            $r = makeQuery($c,"DELETE 
+               FROM `track_breads` 
+               WHERE `id` = ?",$p,false);
+            return ["result" => "success"];
+
+         case "delete_location":
+            $r = makeQuery($c,"DELETE 
+               FROM `track_locations` 
+               WHERE `id` = ?",$p,false);
+            return ["result" => "success"];
+
+
+
+
+
 
          default: return ["error"=>"No Matched Type"];
       }
    } catch(Exception $e) {
       return ["error"=>"Bad Data"];
    }
+}
+
+if(!empty($_FILES)) {
+   $r = makeUpload("image","../uploads/");
+   die(json_encode($r));
 }
 
 

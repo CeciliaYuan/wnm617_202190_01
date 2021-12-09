@@ -25,10 +25,12 @@ $(()=>{
 
 
    // FORM SUBMITS
+
    .on("submit","#signin-form",function(e) {
       e.preventDefault();
       checkSigninForm();
    })
+
    .on("submit","#list-add-form",function(e) {
       e.preventDefault();
    })
@@ -39,14 +41,11 @@ $(()=>{
       userAddForm();
    })
 
-   // .on("submit", "#bread-add-form", function(e) {
-   //    e.preventDefault();
-   //    breadAddForm();
-   // })
-   // .on("submit", "#bread-edit-form", function(e) {
-   //    e.preventDefault();
-   //    breadEditForm();
-   // })
+   .on("submit", "#searchBar", function(e) {
+      e.preventDefault();
+      let s = $(this).find("input").val();
+      checkSearchForm(s);
+   })
 
 
    // ANCHOR CLICKS
@@ -69,6 +68,16 @@ $(()=>{
     .on("click",".js-submituseredit",function(e) {
       e.preventDefault();
       userEditForm();
+
+      let image = $("#user-upload-filename").val();
+      query({
+         type:"update_user_image",
+         params: [image,sessionStorage.userId]
+      }).then(d=>{
+         if(d.error) throw(d.error);
+
+         history.go(-1);
+      })
    })
 
      .on("click",".js-submituserpassword",function(e) {
@@ -92,7 +101,64 @@ $(()=>{
    })
 
 
+     .on("click",".js-breadsearch",function(e){
+      e.preventDefault();
+      let s = $(this).find("input").val();
+      console.log(s)
+   })
 
+      .on("click",".js-delete-bread",function(e){
+      query({
+         type:"delete_bread",
+         params: [sessionStorage.breadId]
+      }).then(d=>{
+         history.go(-2);
+      })
+   })
+
+   .on("click","[data-filter]",function(e){
+      let {filter,value} = $(this).data();
+      if(value=="") ListPage();
+      else checkFilter(filter,value);
+   })
+
+
+   .on("change",".image-picker input",function(e){
+      checkUpload(this.files[0])
+      .then(d=>{
+         console.log(d);
+         $(this).parent().prev().val("uploads/"+d.result);
+         $(this).parent().css({
+            "background-image":`url(uploads/${d.result})`
+         });
+      })
+   })
+
+   // Search function
+
+   .on("submit","#searchBar",function(e){
+      e.preventDefault();
+      let search = $("#search").val();
+      if(search=="") {
+         showListPage();
+      } else {
+         query({
+            type:'breads_search',
+            params:[
+               sessionStorage.userId
+            ]
+         }).then(d=>{
+            if(d.error) throw d.error;
+            else showListPage(d.result);
+         })
+      }
+   })
+
+  // On Change
+
+  .on("change","#location-bread-choice-select",function(e){
+      $("#location-bread-choice").val(this.value)
+   })
 
 
    .on("click","[data-activate]",function(e){
@@ -116,59 +182,6 @@ $(()=>{
       $(this).html($(target).html());
    })
 
-   // Search function
-
-   .on("submit","#searchBar",function(e){
-      e.preventDefault();
-      let search = $("#search").val();
-      if(search=="") {
-         showListPage();
-      } else {
-         query({
-            type:'breads_search',
-            params:[
-               sessionStorage.userId
-            ]
-         }).then(d=>{
-            if(d.error) throw d.error;
-            else showListPage(d.result);
-         })
-      }
-   })
-
-
-
-   // filter function
-
-  // .on("click",".filter",function(e){
-  //     let column = $(this).data("column");
-  //     let filter = $(this).data("value");
-  //     if(filter=="") {
-  //        showListPage();
-  //     } else {
-  //        query({
-  //           type:'filter_breads',
-  //           params:[
-  //              filter,
-  //              sessionStorage.userId,
-  //              column
-  //           ]
-  //        }).then(d=>{
-  //           if(d.error) throw d.error;
-  //           else showListPage(d.result);
-  //        })
-  //     }
-  //  })
-
-
-  // On Change
-
-  .on("change","#location-bread-choice-select",function(e){
-      $("#location-bread-choice").val(this.value)
-   })
 
 
 });
-
-
-

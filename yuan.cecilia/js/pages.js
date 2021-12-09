@@ -9,17 +9,12 @@ const resultQuery = async (options) => {
 }
 
 const ListPage = async() => {
-   // destructure
-   let {result,error} = await query({type:'breads_by_user_id',params:[sessionStorage.userId]});
+   let breads = await resultQuery({
+      type:'breads_by_user_id',
+      params:[sessionStorage.userId]
+   });
 
-   if(error) {
-      console.log(error);
-      return;
-   }
-
-   console.log(result,error);
-
-   $("#page-list .breadlist").html(makeBreadList(result));
+   makeBreadListSet(breads);
 }
 
 const MapPage = async() => {
@@ -166,7 +161,7 @@ const LocationChooseBreadPage = async() => {
 
    $(".location-bread-choice-select").html(
       makeBreadChoiceSelect({
-         animals:result,
+         breads:result,
          name:'location-bread-choice-select'
       })
    );

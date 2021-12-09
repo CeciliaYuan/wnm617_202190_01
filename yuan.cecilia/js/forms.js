@@ -34,7 +34,7 @@ const breadEditForm = async () => {
 
 const userAddForm = async () => {
    let name = $("#signup-name").val();
-   let username = $("signup-username")
+   let username = $("signup-username");
    let email = $("#signup-email").val();
    let password = $("#signup-password").val();
    let confirm = $("#signup-password2").val();
@@ -43,7 +43,7 @@ const userAddForm = async () => {
 
    let r = await query({
       type:'insert_user',
-      params:[name,username,email,password,sessionStorage.userId]
+      params:[name,username,email,password]
    });
 
    if(r.error) throw(r.error);
@@ -98,4 +98,26 @@ const locationAddForm = async () => {
    if(r.error) throw(r.error);
 
    history.go($("#location-navigateback").val());
+}
+
+const checkSearchForm = async (s) => {
+   let breads = await query({
+      type:'breads_search',
+      params:[s,sessionStorage.userId]
+   });
+
+   if(breads.error) throw(breads.error);
+
+   makeBreadListSet(breads.result);
+}
+
+const checkFilter = async (f,v) => {
+   let breads = await query({
+      type:'breads_tag_filter',
+      params:[f,v,sessionStorage.userId]
+   });
+
+   if(breads.error) throw(breads.error);
+
+   makeBreadListSet(breads.result);
 }

@@ -407,7 +407,7 @@ label.form-label{
 }
 
 .map-half{
-   height: 30em;
+   height: 50vh;
 }
 
 .map-frame{
@@ -472,6 +472,7 @@ label.form-label{
    width: 100vw;
    height: 2.5em;
    padding-left: 3em;
+   padding-right: 1em;
 }
 
 .search-input::placeholder {
@@ -661,7 +662,7 @@ label.form-label{
 .user-info{
    display: flex;
    margin: 3%;
-
+   gap: 1em;
 }
 
 .user-img {
@@ -670,7 +671,9 @@ label.form-label{
 }
 
 .user-img img{
-   width: 90%;
+   width: 7em;
+   height: 7em;
+   object-fit: cover;
    border-radius: 50%;
    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25);
 
@@ -706,6 +709,8 @@ label.form-label{
    flex-direction: row;
    padding-bottom: 0.5em;
    padding-top: 0.5em;
+   align-items: center;
+   gap: 0.5em;
 }
 
 .card{
@@ -720,7 +725,6 @@ label.form-label{
 }
 
 .filter{
-   margin: 0.5em;
    padding: 0.3em;
    padding-left: 0.5em;
    padding-right: 0.5em;
@@ -795,6 +799,10 @@ label.form-label{
    color: var(--color-main-medium);
 }
 
+.position-relative {
+   position: relative;
+}
+
 
 /* bread-list Page */
 .breadlist{
@@ -853,20 +861,16 @@ label.form-label{
 }
 
 /* add bread page */
-.add-image-block{
+.image-picker-block{
    margin-top: 3%;
 
 }
 
-.add-image .fa{
-   align-items: center;
-   border-radius: 10px;
-   border-style: dotted;
+.image-picker .fa{
    border-color: var(--color-main-light);
-   padding: 1.5em;
 }
 
-.add-image-block p{
+.image-picker-block p{
    position: relative;
    text-align: center;
 }
@@ -960,8 +964,53 @@ label.form-label{
    border: 1px solid var(--color-neutral-light);
 }
 
+#list-modal6{
+   z-index: 1;
+}
+
+.delete-btn{
+   color: var(--color-main-medium);
+   background-color: var(--color-white);
+   border-style: solid;
+   margin: 0 auto;
+   display: block;
+}
+
+.cancel-btn{
+   color: var(--color-black);
+   background-color: var(--color-white);
+   border-style: solid;
+   margin: 0 auto;
+   display: block;
+}
+
+.delete-confirm, .delete-cancle{
+   width: 50%;
+   text-align: center;
+   padding: 0.5em;
+}
+
+.delete-btns{
+   width: 100%;
+}
+
+.delete-popup{
+   border-radius: 2em;
+   padding: 2em;
+}
+
+.drawer-center{
+   left: 10vw;
+   right: 10vw;
+   top: 30vh;
+}
+
+.modal-body.delete-popup p {
+    padding-bottom: 1em;
+}
 
 /* dropdown */
+
 .modal-drawer-dropdown {
    position: absolute;
    display: flex;
@@ -970,7 +1019,7 @@ label.form-label{
 }
 
 
-.modal-dropdown .fa{
+.bread-modal-dropdown .fa, .modal-dropdown .fa{
    color: var(--color-main-medium);
    height: 100%;
    width: 100%;
@@ -982,6 +1031,18 @@ label.form-label{
    color: var(--primary);
 }
 
+.bread-modal-dropdown li:active{
+   box-shadow: inset 0.2rem 0.2rem 0.5rem var(--color-neutral-light-2), inset -0.2rem -0.2rem 0.5rem var(--color-white);
+   color: var(--primary);
+}
+
+.bread-modal-dropdown li {
+   background-color: var(--color-white);
+   border-radius: 50%;
+   margin: 0.7em;
+   box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+
 .modal-dropdown li{
    background-color: var(--color-white);
    border-radius: 50%;
@@ -990,8 +1051,30 @@ label.form-label{
    box-shadow: 0 0 5px rgba(0,0,0,0.3);
 }
 
+.bread-modal-dropdown ul{
+   list-style-type: none;
+   flex-direction: column;
+   z-index: 1;
+}
+
 .modal-dropdown ul{
    list-style-type: none;
+}
+
+.bread-modal-dropdown{
+    flex-direction: column;
+    z-index: 1;
+    position: absolute;
+    transition:all 0.3s;
+   transform:translateX(100%);
+}
+
+.toggle{
+   position: relative;
+}
+
+.bread-modal-dropdown.active{
+  transform:translateX(-30%);
 }
 
 /* forget password page */
@@ -1064,3 +1147,26 @@ label.form-label{
    box-shadow: 0.3rem 0.3rem 0.6rem var(--color-neutral-light-2), -0.2rem -0.2rem 0.5rem var(--color-white);
 }
 
+.user-change-img{
+   text-align: center;
+}
+
+label.image-picker{
+   width: 6em;
+    height: 6em;
+    text-align: center;
+    padding: 2em;
+    border-style: dotted;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    align-items: center;
+    border-color: var(--color-main-light);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.image-picker input{
+   display: none;
+}

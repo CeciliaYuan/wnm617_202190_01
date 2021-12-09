@@ -18,14 +18,15 @@ const makeBreadList = templater((o)=>`
 
 const makeUserProfile = templater((o)=>`
     <div class="user-info">
-        <div class="user-img"><img src="${o.img}" alt="user_imgae"></div>
+        <div class="user-img">
+            <img src="${o.img}" alt="user_imgae">
+         </div>
         <div class="user-name">
             <h1 style="color: var(--color-main-dark);">${o.name}</h1>
             <p style="color: var(--color-main-light);">${o.username}</p>
             <p style="color: var(--color-main-light);">${o.email}</p>
         </div> 
         <div class="floater right"><a href="#"  data-activate="#list-modal10"><i class="fa fa-cog fa-lg"></i></a></div>
-              <!-- source from https://www.emojisky.com/desc/8475 --> 
     </div>
 `);
 
@@ -155,4 +156,29 @@ const makeBreadChoiceSelect = ({breads,name,chosen=0}) => `
       <option value="${o.id}" ${o.id===chosen?'selected':''}>${o.name}</option>
    `)(breads)}
 </select>
+
 `;
+
+
+const makeBreadListSet = (arr,target="#page-list .breadlist") => {
+   $(".list-filters").html(makeFilterList(arr));
+   $(target).html(makeBreadList(arr));
+}
+
+const capitalize = s => s[0].toUpperCase()+s.substr(1);
+
+const filterList = (breads,tag) => {
+   let a = [...(new Set(breads.map(o=>o[tag])))];
+   return templater(o=>o?`<a href="#" data-filter="${tag}" data-value="${o}" class="tag filter">${capitalize(o)}</a>
+`:'')(a);
+}
+
+const makeFilterList = (breads) => {
+   return `
+   <a href="#" data-filter="" data-value="" class="tag filter">All</a>
+   <div>|</div>
+   ${filterList(breads,'tag')}
+   <div>|</div>
+   ${filterList(breads,'bakery')}
+   `;
+}
