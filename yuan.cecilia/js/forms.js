@@ -34,12 +34,13 @@ const breadEditForm = async () => {
 
 const userAddForm = async () => {
    let name = $("#signup-name").val();
-   let username = $("signup-username");
+   let username = $("#signup-username").val();
    let email = $("#signup-email").val();
    let password = $("#signup-password").val();
    let confirm = $("#signup-password2").val();
 
-   if(password!==confirm) throw ("Passwords don't match")
+   if(password!=confirm)
+      throw("Passwords don't match: You should handle this in some way.");
 
    let r = await query({
       type:'insert_user',
@@ -48,7 +49,9 @@ const userAddForm = async () => {
 
    if(r.error) throw(r.error);
 
-   history.go(-1);
+   sessionStorage.userId = r.id;
+
+   $.mobile.navigate("#page-map");
 }
 
 
@@ -121,3 +124,15 @@ const checkFilter = async (f,v) => {
 
    makeBreadListSet(breads.result);
 }
+
+const checkCount = async (f,v) => {
+   let breads = await query({
+      type:'breads_tag_filter',
+      params:[f,v,sessionStorage.userId]
+   });
+
+   if(breads.error) throw(breads.error);
+
+   makeCountList(breads.result);
+}
+

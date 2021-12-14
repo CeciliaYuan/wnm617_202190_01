@@ -239,7 +239,7 @@
             <li><a href="#" data-rel="back"><i class="fa fa-arrow-left"></i></a></li>
             <li class="flex-stretch"></li>
             <li class="save">
-               <a href="#" class="save-icon js-maplocationaddlocation">Save</a>
+               <a href="#page-add-location" class="save-icon js-maplocationaddlocation">Next</a>
             </li>
          </ul>
          
@@ -293,10 +293,13 @@
       <div data-role="main">
             <div class="floater overscroll-y fill-parent">
                <div class="layout">
-               <div class="add-image-block">
-                  <div class="add-image"><i class="fa fa-camera fa-lg"></i></div>
-                     
-               </div>
+               <div class="add-image-block user-change-img">
+                     <input type="hidden" id="bread-add-filename">
+                     <label class="image-picker imagepicker-replace">
+                        <input type="file" data-role="none" >
+                        <i class="fa fa-camera fa-lg"></i>
+                     </label>
+                  </div>
 
               <!--  <form class="form fill-parent display-flex flex-vertical" data-ajax="false"  id="bread-edit-form">
                      <div class="flex-stretch">
@@ -584,7 +587,7 @@
                      <div class="location-address">
                            <div class="map profile-map-conainer"></div>
                            <div class="floater floater-inside">
-                                 <a href="#page-add-location" class="btn-circle-sm ui-link"><i class="fa fa-plus" fa-3x></i></a>
+                                 <a href="#page-add-location" class="btn-circle-sm js-choosebread ui-link"><i class="fa fa-plus" fa-3x></i></a>
                            </div>
                      </div>
                </div>
@@ -666,9 +669,12 @@
          <div data-role="main">
             <div class="floater overscroll-y fill-parent" data-ajax="false">
                <div class="layout">
-                  <div class="add-image-block">
-                     <div class="add-image"><i class="fa fa-camera fa-lg"></i></div>
-                        
+                  <div class="add-image-block user-change-img">
+                     <input type="hidden" id="bread-upload-filename">
+                     <label class="image-picker imagepicker-replace">
+                        <input type="file" data-role="none" >
+                        <i class="fa fa-camera fa-lg"></i>
+                     </label>
                   </div>
 
                   <form class="form fill-parent display-flex flex-vertical edit-add-form" data-ajax="false"  id="bread-edit-form">

@@ -733,6 +733,7 @@ label.form-label{
    border-color: var(--color-main-medium);
    border-radius: 30px;
    font-size: 0.9em;
+   white-space: nowrap;
 }
 
 .filter:active {
@@ -866,8 +867,12 @@ label.form-label{
 
 }
 
-.image-picker .fa{
+label.image-picker .fa{
    border-color: var(--color-main-light);
+}
+
+label.image-picker.picked .fa{
+   display: none;
 }
 
 .image-picker-block p{
@@ -1151,6 +1156,10 @@ label.form-label{
    text-align: center;
 }
 
+.add-image-block{
+   padding-top: 1em;
+}
+
 label.image-picker{
    width: 6em;
     height: 6em;
@@ -1162,7 +1171,7 @@ label.image-picker{
     border-radius: 10px;
     align-items: center;
     border-color: var(--color-main-light);
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 }

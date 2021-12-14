@@ -165,11 +165,11 @@ const makeBreadListSet = (arr,target="#page-list .breadlist") => {
    $(target).html(makeBreadList(arr));
 }
 
-const capitalize = s => s[0].toUpperCase()+s.substr(1);
+// const capitalize = s => s[0].toUpperCase()+s.substr(1);
 
 const filterList = (breads,tag) => {
    let a = [...(new Set(breads.map(o=>o[tag])))];
-   return templater(o=>o?`<a href="#" data-filter="${tag}" data-value="${o}" class="tag filter">${capitalize(o)}</a>
+   return templater(o=>o?`<a href="#" data-filter="${tag}" data-value="${o}" class="tag filter">${o}</a>
 `:'')(a);
 }
 
@@ -182,3 +182,15 @@ const makeFilterList = (breads) => {
    ${filterList(breads,'bakery')}
    `;
 }
+
+
+// const CountList =() =>{
+//    let
+// }
+
+
+// const makeCountList = () =>{
+//    return`
+
+//    `
+// }

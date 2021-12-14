@@ -165,5 +165,8 @@ const LocationChooseBreadPage = async() => {
          name:'location-bread-choice-select'
       })
    );
+
+    $("#location-bread-choice").val(result[0].id);
 }
+
 

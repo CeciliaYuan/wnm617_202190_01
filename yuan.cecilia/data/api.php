@@ -132,12 +132,35 @@ function makeStatement($data) {
                ",[$p[1],$p[2]]);
 
 
+         case  "breads_number":
+            return makeQuery($c,"SELECT count (*) 
+               FROM `track_breads`
+               WHERE
+                  `user_id` = ? as countOfBreads
+               ",$p);
+
+
+         case  "tags_number":
+            return makeQuery($c,"SELECT count (tag)
+               FROM `track_breads`
+               WHERE
+                  `user_id` = ?  as countOfTags
+               ",$p);
+
+         case  "locations_number":
+            return makeQuery($c,"SELECT count (*) 
+               FROM `track_locations`
+               WHERE
+                  `user_id` = ? as countOfLocations
+               ",$p);
+
+
 
 
          /* CREATE */
 
          case "insert_user":
-            $r = makeQuery($c,"SELECT id FROM `track_users` WHERE `username`=? OR `email` = ?",$p);
+            $r = makeQuery($c,"SELECT id FROM `track_users` WHERE `username`=? OR `email` = ?",[$p[0],$p[1]]);
             if(count($r['result'])) return ["error"=>"Username or Email already exists"];
 
             $r = makeQuery($c,"INSERT INTO
@@ -146,7 +169,8 @@ function makeStatement($data) {
                VALUES
                (?, ?, ?, md5(?), 'http://via.placeholder.com/400/?text=USER', NOW())
                ",$p,false);
-            return ["id" => $c->lastInsertId()];
+            $r['id'] = $c->lastInsertId();
+            return $r;
 
 
 
@@ -181,7 +205,7 @@ function makeStatement($data) {
                   `email` = ?
                WHERE `id` = ?
                ",$p,false);
-            return ["result" => "success"];
+            return $r;
 
          case "update_user_password":
             $r = makeQuery($c,"UPDATE
@@ -190,7 +214,7 @@ function makeStatement($data) {
                   `password` = md5(?)
                WHERE `id` = ?
                ",$p,false);
-            return ["result" => "success"];
+            return $r;
 
          case "update_bread":
             $r = makeQuery($c,"UPDATE
@@ -202,7 +226,7 @@ function makeStatement($data) {
                   `description` = ?
                WHERE `id` = ?
                ",$p,false);
-            return ["result" => "success"];
+            return $r;
 
          case "update_location":
             $r = makeQuery($c,"UPDATE
@@ -211,7 +235,7 @@ function makeStatement($data) {
                   `description` = ?
                WHERE `id` = ?
                ",$p,false);
-            return ["result" => "success"];
+            return $r;
 
 
          case "update_user_image":
@@ -221,7 +245,16 @@ function makeStatement($data) {
                   `img` = ?
                WHERE `id` = ?
                ",$p,false);
-            return ["result" => "success"];
+            return $r;
+
+
+         case "update_bread_image":
+            $r = makeQuery($c,"UPDATE
+               `track_breads`
+               SET `img` = ?
+               WHERE `id` = ?
+               ",$p,false);
+            return $r;
 
 
             /* DELETE */
@@ -229,13 +262,13 @@ function makeStatement($data) {
             $r = makeQuery($c,"DELETE 
                FROM `track_breads` 
                WHERE `id` = ?",$p,false);
-            return ["result" => "success"];
+            return $r;
 
          case "delete_location":
             $r = makeQuery($c,"DELETE 
                FROM `track_locations` 
                WHERE `id` = ?",$p,false);
-            return ["result" => "success"];
+            return $r;
 
 
 

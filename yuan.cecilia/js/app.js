@@ -63,6 +63,11 @@ $(()=>{
    })
 
 
+    .on("click",".js-choosebread",function(e){
+      $("#location-bread-choice").val(sessionStorage.breadId);
+   })
+
+
    // FORM ANCHOR CLICKS
 
     .on("click",".js-submituseredit",function(e) {
@@ -93,11 +98,33 @@ $(()=>{
      .on("click",".js-saveaddbreadform",function(e){
       e.preventDefault();
       breadAddForm();
+
+      let image = $("#bread-add-filename").val();
+      query({
+         type:"update_bread_image",
+         params: [image,sessionStorage.breadId]
+      }).then(d=>{
+         if(d.error) throw(d.error);
+
+         history.go(-1);
+      })
+
+
    })
 
      .on("click",".js-breadeditform",function(e){
       e.preventDefault();
       breadEditForm();
+
+      let image = $("#bread-upload-filename").val();
+      query({
+         type:"update_bread_image",
+         params: [image,sessionStorage.breadId]
+      }).then(d=>{
+         if(d.error) throw(d.error);
+
+         history.go(-1);
+      })
    })
 
 
@@ -128,31 +155,15 @@ $(()=>{
       .then(d=>{
          console.log(d);
          $(this).parent().prev().val("uploads/"+d.result);
-         $(this).parent().css({
+         $(this).parent()
+         .addClass('picked')
+         .css({
             "background-image":`url(uploads/${d.result})`
          });
       })
    })
 
-   // Search function
-
-   .on("submit","#searchBar",function(e){
-      e.preventDefault();
-      let search = $("#search").val();
-      if(search=="") {
-         showListPage();
-      } else {
-         query({
-            type:'breads_search',
-            params:[
-               sessionStorage.userId
-            ]
-         }).then(d=>{
-            if(d.error) throw d.error;
-            else showListPage(d.result);
-         })
-      }
-   })
+  
 
   // On Change
 
