@@ -193,10 +193,11 @@
             <div class="map-frame">
              <div class="map map-conainer"></div>
           </div>
-             <div class="search-box" data-role="none">
-               <input type="text" class="search-input" placeholder="Search..." data-role="none">
-               <div class="search-btn"><i class="fa fa-search"></i></div>
-             </div>
+             <form data-ajax="false" class="search-box" id="searchBar-location" data-role="none" data-ajax="false">
+               <input type="search" class="search-input" id="search-location" placeholder="Search..." data-role="none">
+                  <div class="search-btn"><i class="fa fa-search"></i></div>
+            </form>
+
 
             <!-- <div class="floater" style="top:35%; left:65%;">
                 <a href="#" data-active="" class="ui-link">
@@ -249,11 +250,17 @@
          <div class="overscroll floater fill-parent">
                <div class="layout">
           <input type="hidden" id="location-bread-choice">
-         <div>
+
+          <div class="email-text">
+            <h1>Select your bread</h1>
+            <p>or</p>
+         </div>
+         <div class="choose-bread-text">
             <a href="#page-map-add">Make a new bread</a>
          </div>
-         <p>Or</p>
          <div class="form-select location-bread-choice-select"></div>
+
+         <div class="select-bread-img"></div>
                   <!-- <div class="layout bread-location-sm">
                      <input type="hidden" id="location-lat-map">
                      <input type="hidden" id="location-lng-map">
@@ -296,8 +303,11 @@
                <div class="add-image-block user-change-img">
                      <input type="hidden" id="bread-add-filename">
                      <label class="image-picker imagepicker-replace">
+                        <div class="user-image-edit-preview bg"></div>
                         <input type="file" data-role="none" >
-                        <i class="fa fa-camera fa-lg"></i>
+                        <div class="camera-icon">
+                        <i class="fa fa-camera fa"></i>
+                     </div>
                      </label>
                   </div>
 
@@ -431,26 +441,7 @@
          <div class="layout">
             <div class="userinfo"></div>
 
-            <div class="content-info display-flex">
-               <div class="display-flex card">
-                  <div class="total-card">
-                     <p class="total-number">10</p>
-                     <p class="total-name">Bread</p>
-                  </div>
-               </div>
-               <div class="display-flex card">
-                  <div class="total-card">
-                     <p class="total-number">3</p>
-                     <p class="total-name">Tag</p>
-                  </div>
-               </div>
-               <div class="display-flex card">
-                  <div class="total-card">
-                     <p class="total-number">29</p>
-                     <p class="total-name">Location</p>
-                  </div>
-               </div>
-            </div>
+            
             
          </div>
       </div>
@@ -504,8 +495,11 @@
                   <div class="add-image-block user-change-img">
                      <input type="hidden" id="user-upload-filename">
                      <label class="image-picker imagepicker-replace">
+                        <div class="user-image-edit-preview"></div>
                         <input type="file" data-role="none" >
-                        <i class="fa fa-camera fa-lg"></i>
+                        <div class="camera-icon">
+                        <i class="fa fa-camera fa"></i>
+                     </div>
                      </label>
                   </div>
 
@@ -612,6 +606,56 @@
                </div>
             </div>
          </div>
+
+         <div class="modal" id="list-modal7">
+            <div class="modal-back" data-deactivate="#list-modal7"></div>
+            <div class="modal-drawer drawer-center">
+               <div class="modal-body delete-popup" data-role="none">
+                  <p>Are you sure to delete this Location?</p>
+                  <div class="delete-btns display-flex">
+                     <div class="delete-confirm">
+                        <button class="form-button delete-btn js-delete-location" data-role="none" data-deactivate="#list-modal7">Delete</button>
+                     </div>
+                     
+                     <div class="delete-cancle">
+                        <button class="form-button cancel-btn js-cancle" data-role="none"  data-deactivate="#list-modal7">Cancle</button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+         <div class="modal" id="popup-modal1">
+            <div class="modal-back" data-deactivate="#popup-modal1"></div>
+            <div class="modal-drawer drawer-center">
+               <div class="modal-body location-popup" data-role="none">
+
+
+                  <div class="add-image-block user-change-img">
+                     <input type="hidden" id="location-upload-filename">
+                     <label class="image-picker imagepicker-replace">
+                         <div class="location-image-edit-preview"></div>
+                        <input type="file" data-role="none" >
+                        <div class="camera-icon">
+                        <i class="fa fa-camera fa"></i>
+                     </div>
+                     </label>
+                  </div>
+                  
+
+                  <div class="delete-btns display-flex">
+                     <div class="delete-confirm">
+                        <button class="form-button delete-btn js-img-location" data-role="none" data-deactivate="#popup-modal1">Save</button>
+                     </div>
+                     
+                     <div class="delete-cancle">
+                        <button class="form-button cancel-btn js-cancle" data-role="none"  data-deactivate="#popup-modal1">Cancle</button>
+                     </div>
+                  </div>
+                  
+               </div>
+            </div>
+         </div>
    </section>
 
 
@@ -639,6 +683,8 @@
                      <div class="map map-half"></div>
                   </div>
 
+
+
                   <form action="" style="padding-top:33em">
                      <input type="hidden" id="location-navigateback" value="-3">
 
@@ -647,6 +693,8 @@
                         <textarea id="location-description" class="form-input" data-role="none" placeholder="What did it look like?"></textarea>
                      </div>
                   </form>
+
+
                </div>
             </div>
          </div>
@@ -672,8 +720,11 @@
                   <div class="add-image-block user-change-img">
                      <input type="hidden" id="bread-upload-filename">
                      <label class="image-picker imagepicker-replace">
+                         <div class="user-image-edit-preview"></div>
                         <input type="file" data-role="none" >
-                        <i class="fa fa-camera fa-lg"></i>
+                        <div class="camera-icon">
+                        <i class="fa fa-camera fa"></i>
+                     </div>
                      </label>
                   </div>
 

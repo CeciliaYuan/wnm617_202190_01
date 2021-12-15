@@ -51,17 +51,61 @@ const MapPage = async() => {
 }
 
 
+const mapMapSearchList = async(arr) => {
+   let breads = arr.reduce((r,o)=>{
+      o.icon = o.icon;
+      if(o.lat && o.lng) r.push(o);
+      return r;
+   },[]);
+
+
+   let mapEl = await makeMap("#page-map .map");
+   makeMarkers(mapEl, breads);
+
+
+   let {infoWindow,map,markers} = mapEl.data();
+   mapEl.data('markers').forEach((o,i)=>{
+      o.addListener("click",function(){
+
+         /* 
+          Example */
+         // sessionStorage.breadId = breads[i].bread_id;
+         // $.mobile.navigate("#page-bread-profile")
+
+         /* InfoWindow Example */
+         infoWindow.open(map,o);
+         infoWindow.setContent(makeBreadPopup(breads[i]))
+      })
+   });
+}
+
+
+
 const UserProfilePage = async() => {
-   let {result,error} = await query({type:'user_by_id',params:[sessionStorage.userId]});
+   let breads = await resultQuery({
+      type:'breads_by_user_id',
+      params:[sessionStorage.userId]});
+   let tbs = breads.length
 
-   if(error) {
-      console.log(error);
-      return;
-   }
 
-   let [user] =result;
+   let tags = await resultQuery({
+      type:'tags_by_user_id',
+      params:[sessionStorage.userId]});  
+   let tts = tags.length;
 
-   $("#page-user-profile .userinfo").html(makeUserProfile(user));
+     let loctions = await resultQuery({
+      type:'locations_by_user_id',
+      params:[sessionStorage.userId]
+   });
+   let tls = loctions.length;
+
+   let result = await resultQuery({
+         type:'user_by_id',
+         params:[sessionStorage.userId]});
+
+   let [user] = result;
+
+    $("#page-user-profile .userinfo").html(makeUserProfile(user, tbs, tts, tls));
 }
 
 
@@ -87,6 +131,21 @@ const BreadProfilePage = async() => {
    $(".bread_tag").text(bread.tag);
    $(".bread_date_create").text(bread.date_create);
    $(".bread_description").text(bread.description);
+
+   let {infoWindow,map,markers} = mapEl.data();
+   mapEl.data('markers').forEach((o,i)=>{
+      o.addListener("click",function(){
+
+         /* 
+          Example */
+         // sessionStorage.breadId = breads[i].bread_id;
+         // $.mobile.navigate("#page-bread-profile")
+
+         /* InfoWindow Example */
+         infoWindow.open(map,o);
+         infoWindow.setContent(makeLocationPopup(location_result[i]))
+      })
+   });
 }
 
 const BreadAddPage = async() =>{
@@ -125,6 +184,10 @@ const BreadEditPage = async() => {
    $("#bread-edit-form .fill-parent").html(
       makeBreadFormInputs(bread,"bread-edit")
    );
+
+   $(".user-image-edit-preview").html
+   (makeImagePreview(bread, "bread-edit"));
+
 }
 
 const UserEditPgae = async() => {
@@ -138,7 +201,14 @@ const UserEditPgae = async() => {
    $("#user-edit-input-box").html
    (makeUserFormInputs(user, "user-edit"));
 
+
+   $(".user-image-edit-preview").html
+   (makeImagePreview(user, "user-edit"));
+
 }
+
+
+
 
 const LocationSetLocationPage = async() =>{
    let mapEl = await makeMap("#page-add-location .map");
@@ -151,6 +221,8 @@ const LocationSetLocationPage = async() =>{
    })
 }
 
+
+
 const LocationChooseBreadPage = async() => {
    let result = await resultQuery({
       type:'breads_by_user_id',
@@ -162,11 +234,12 @@ const LocationChooseBreadPage = async() => {
    $(".location-bread-choice-select").html(
       makeBreadChoiceSelect({
          breads:result,
-         name:'location-bread-choice-select'
+         name:'location-bread-choice-select-option'
       })
    );
 
     $("#location-bread-choice").val(result[0].id);
+
 }
 
 

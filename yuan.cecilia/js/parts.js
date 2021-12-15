@@ -16,7 +16,11 @@ const makeBreadList = templater((o)=>`
 
 `);
 
-const makeUserProfile = templater((o)=>`
+const makeImagePreview  = templater((o)=>`
+  <img src="${o.img}" alt="imgae-preview">
+`);
+
+const makeUserProfile =(o, tbs, tts, tls) => `
     <div class="user-info">
         <div class="user-img">
             <img src="${o.img}" alt="user_imgae">
@@ -28,27 +32,29 @@ const makeUserProfile = templater((o)=>`
         </div> 
         <div class="floater right"><a href="#"  data-activate="#list-modal10"><i class="fa fa-cog fa-lg"></i></a></div>
     </div>
-`);
 
-// const makeBreadProfile = templater((o)=>`
-//      <div class="display-flex">
-//         <div class="bread-image">
-//             <img src="${o.img}">
-//         </div>
-//     </div>
-//     <div class="bread-info">
-//         <div class="display-flex bread-info-name">
-//             <h1>${o.name}</h1>
-//             <h4>${o.tag}</h4>
-//         </div>
-//             <h3 data-role="none">Bakery :${o.bakery}</h3>
-            
-//         </div>
-//         <p>${o.date_create}</p>
-//         <p>${o.description}</p>
-//     </div>
+    <div class="content-info display-flex">
+               <div class="display-flex card">
+                  <div class="total-card">
+                     <p class="total-number">${tbs}</p>
+                     <p class="total-name">Breads</p>
+                  </div>
+               </div>
+               <div class="display-flex card">
+                  <div class="total-card">
+                     <p class="total-number">${tts}</p>
+                     <p class="total-name">Tags</p>
+                  </div>
+               </div>
+               <div class="display-flex card">
+                  <div class="total-card">
+                     <p class="total-number">${tls}</p>
+                     <p class="total-name">Locations</p>
+                  </div>
+               </div>
+            </div>
+`;
 
-// `);
 
 const makeBreadPopup = o => `
 <div class="display-flex bread-jump" data-id="${o.bread_id}">
@@ -61,6 +67,19 @@ const makeBreadPopup = o => `
       <div class="breadlist-item-popup-tag">Tag : ${o.tag}</div>
    </div>
 </div>
+`;
+
+const makeLocationPopup = o =>`
+<div class="location-popup">
+   <p>${o.description}</p>
+</div>
+<div class="floater right location-popup-icons">
+   <div class="location-delete-icon">
+           <a href="#" data-activate="#list-modal7"><i class="fa fa-trash fa-lg"></i></a>
+   </div>
+</div>
+
+
 `;
 
 const FormControlInput = ({namespace,name,displayname,type,placeholder,value}) => `
@@ -157,6 +176,9 @@ const makeBreadChoiceSelect = ({breads,name,chosen=0}) => `
    `)(breads)}
 </select>
 
+
+
+
 `;
 
 
@@ -182,15 +204,3 @@ const makeFilterList = (breads) => {
    ${filterList(breads,'bakery')}
    `;
 }
-
-
-// const CountList =() =>{
-//    let
-// }
-
-
-// const makeCountList = () =>{
-//    return`
-
-//    `
-// }

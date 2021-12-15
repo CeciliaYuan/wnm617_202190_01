@@ -48,6 +48,13 @@ $(()=>{
    })
 
 
+    .on("submit", "#searchBar-location", function(e) {
+      e.preventDefault();
+      let s = $(this).find("input").val();
+      checkMapSearchForm(s);
+   })
+
+
    // ANCHOR CLICKS
    .on("click",".js-logout",function(e) {
       e.preventDefault();
@@ -112,6 +119,23 @@ $(()=>{
 
    })
 
+
+
+     .on("click",".js-img-location",function(e) {
+       let photo = $("#location-upload-filename").val();
+
+      query({
+         type:"update_location_image",
+
+         params: [photo,sessionStorage.locationId]
+      }).then(d=>{
+         if(d.error) throw(d.error); 
+      })
+   })
+
+
+
+
      .on("click",".js-breadeditform",function(e){
       e.preventDefault();
       breadEditForm();
@@ -143,6 +167,16 @@ $(()=>{
       })
    })
 
+
+      .on("click",".js-delete-location",function(e){
+      query({
+         type:"delete_location",
+         params: [sessionStorage.breadId]
+      }).then(d=>{
+         history.go(-1);
+      })
+   })
+
    .on("click","[data-filter]",function(e){
       let {filter,value} = $(this).data();
       if(value=="") ListPage();
@@ -161,7 +195,7 @@ $(()=>{
             "background-image":`url(uploads/${d.result})`
          });
       })
-   })
+   })    
 
   
 

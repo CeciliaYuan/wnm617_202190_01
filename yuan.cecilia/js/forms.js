@@ -136,3 +136,13 @@ const checkCount = async (f,v) => {
    makeCountList(breads.result);
 }
 
+const checkMapSearchForm = async (s) => {
+   let breads = await query({
+      type:'search_bread_locations',
+      params:[s,sessionStorage.userId]
+   });
+
+   if(breads.error) throw(breads.error);
+
+   mapMapSearchList(breads.result);
+}
