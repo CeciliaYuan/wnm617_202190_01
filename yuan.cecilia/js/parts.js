@@ -73,7 +73,7 @@ const makeLocationPopup = o =>`
 <div class="location-popup">
    <p>${o.description}</p>
 </div>
-<div class="floater right location-popup-icons">
+<div class="location-popup-icons">
    <div class="location-delete-icon">
            <a href="#" data-activate="#list-modal7"><i class="fa fa-trash fa-lg"></i></a>
    </div>
